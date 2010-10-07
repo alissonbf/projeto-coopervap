@@ -15,7 +15,7 @@
 #						                                   #
 #  [Descricao]##############################################
 #					                                       #
-#  Este script contem os metodos que se comunicam com      #
+#  Este modulo contem os metodos que se comunicam com      #
 #  o banco de dados e que efetivão as regras de negocio.   #
 #					                                       #
 ############################################################

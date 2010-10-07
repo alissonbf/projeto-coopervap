@@ -15,7 +15,7 @@
 #						                                   #
 #  [Descricao]##############################################
 #					                                       #
-#  Este script contem as classes dos objetos que são       #
+#  Este modulo contem as classes dos objetos que são       #
 #  usados pelo programa.                                   #
 #					                                       #
 ############################################################

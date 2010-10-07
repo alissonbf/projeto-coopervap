@@ -77,7 +77,7 @@ class CadastroUsuario(QDialog, Ui_Dialog):
         
         self.tabela.setModel(self.usuarioModel)         
     
-    # Ativa o botão de salvar e muda o nome do botão de excluir para cancelar, se o status for True
+    # Ativa o botão de salvar e  cancelar, se o status for True
     def setIncluindo(self,status):
         self.incluindoUsuario = status
         self.Salvar.setEnabled(self.incluindoUsuario)
@@ -87,7 +87,7 @@ class CadastroUsuario(QDialog, Ui_Dialog):
             self.Deletar.setEnabled(self.incluindoUsuario)
     
 
-    # Ativa o botão de salvar e muda o nome do botão de excluir para cancelar, se o status for True
+    # Ativa o botão de salvar e cancelar, se o status for True
     def setEditando(self,status):
         self.editandoUsuario = status
         self.Salvar.setEnabled(self.editandoUsuario)
@@ -181,6 +181,7 @@ class CadastroUsuario(QDialog, Ui_Dialog):
         except AttributeError:                
             pass
 
+    # Ativa todos os campos de inserção de dados
     def destrava(self):
         self.EditNome.setEnabled(True)
         self.EditEmail.setEnabled(True)
