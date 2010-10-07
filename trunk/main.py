@@ -27,7 +27,7 @@ from View import *
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)      
-    agd = principal()
+    agd = CadastroUsuario()
     agd.show()
     app.exec_()
     
