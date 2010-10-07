@@ -234,6 +234,8 @@ class CadastroUsuario(QDialog, Ui_Dialog):
         except AttributeError:
             pass
     
+
+    # Desabilita os botões de salvar e cancelar, limpa os campos e se existe uma linha vazia na coluna, limpa a mesma.
     @pyqtSignature("")
     def on_Deletar_clicked(self):
         linha = self.usuarioModel.rowCount()
@@ -249,9 +251,9 @@ class CadastroUsuario(QDialog, Ui_Dialog):
         self.EditConfirme.clear()        
         self.abrirTabelaUsuario()         
 
+    # Desativa os campos de texto de senha e confirmar senha, recebe como parametro o texto que esta no campo de texto
     @pyqtSignature("QString")      
     def on_EditNome_textEdited(self, text):
-        print "Sinal enviado"
         if (not(self.incluindoUsuario or self.editandoUsuario)):
             self.EditSenha.setEnabled(False)
             self.EditConfirme.setEnabled(False)
@@ -285,7 +287,7 @@ class CadastroUsuario(QDialog, Ui_Dialog):
             self.EditConfirme.setEnabled(False)
             self.setEditando(True)
 
-
+    # Fecha janela
     @pyqtSignature("") 
     def on_Fechar_clicked(self):
         self.close()
