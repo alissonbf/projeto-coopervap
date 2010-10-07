@@ -17,7 +17,7 @@
 #  [Descricao]##############################################
 #					                                       #
 #  Este script contem as classes que se comunicam com      #
-#  as interfaces graficas.                                 #
+#  as interfaces graficas e da vida aos seus botões        #
 #					                                       #
 ############################################################
 
@@ -33,7 +33,7 @@ from telas.GuiCadastroUsuario import *
 from Controller import *
 from Model import *
 
-class principal(QDialog, Ui_Dialog):
+class CadastroUsuario(QDialog, Ui_Dialog):
     def __init__(self, parent=None):
         super(principal, self).__init__(parent)
         self.setupUi(self)
@@ -58,18 +58,13 @@ class principal(QDialog, Ui_Dialog):
         self.mapeador.setSubmitPolicy(QDataWidgetMapper.ManualSubmit)       
         
 
-        self.connect(self.tabela.selectionModel(), SIGNAL("currentRowChanged(QModelIndex,QModelIndex)"), self, SLOT(self.preenche()))
+        self.connect(self.tabela.selectionModel(), SIGNAL("currentRowChanged(QModelIndex,QModelIndex)"), self.mapeador, SLOT("setCurrentModelIndex(QModelIndex)"))
        
-        self.EditNome.setEnabled(False)
-        self.EditEmail.setEnabled(False)
-        self.EditFuncao.setEnabled(False)
-        self.EditLogin.setEnabled(False)
-        self.EditSenha.setEnabled(False)
-        self.EditConfirme.setEnabled(False)  
+        self.destrava() 
 
     # Preence a tabela com os dados que estão no banco de dados
     def abrirTabelaUsuario(self):        
-        consulta = "SELECT id_usuario,nome,email,funcao,status,login FROM usuario"     
+        consulta = "SELECT id_usuario,nome,email,funcao,status,login FROM usuario ORDER BY id_usuario"     
         self.usuarioModel.setQuery(QSqlQuery(consulta, self.bancoDeDados))
 
         self.usuarioModel.setHeaderData(0, Qt.Horizontal, "ID")
@@ -80,12 +75,8 @@ class principal(QDialog, Ui_Dialog):
         self.usuarioModel.setHeaderData(5, Qt.Horizontal, "Login")
         self.usuarioModel.setEditStrategy(QSqlTableModel.OnManualSubmit)
         
-        self.tabela.setModel(self.usuarioModel) 
-
-
-
-        
-
+        self.tabela.setModel(self.usuarioModel)         
+    
     # Ativa o botão de salvar e muda o nome do botão de excluir para cancelar, se o status for True
     def setIncluindo(self,status):
         self.incluindoUsuario = status
@@ -94,7 +85,7 @@ class principal(QDialog, Ui_Dialog):
             self.Deletar.setEnabled(self.incluindoUsuario)
         else:
             self.Deletar.setEnabled(self.incluindoUsuario)
-
+    
 
     # Ativa o botão de salvar e muda o nome do botão de excluir para cancelar, se o status for True
     def setEditando(self,status):
@@ -107,16 +98,19 @@ class principal(QDialog, Ui_Dialog):
 
     # Valida os dados, digitados pelo usuario
     def valido(self):
-        if(not(self.EditID.text()=="")):
+        if(self.EditID.text()!=""):
             id_usu = int(self.EditID.text())
+            senha = "##########"
+            senha_confirme = "##########"
         else:
             id_usu = self.EditID.text()
+            senha = self.EditSenha.text()
+            senha_confirme = self.EditConfirme.text()
+
         nome = self.EditNome.text()
         email = self.EditEmail.text()
         funcao = self.EditFuncao.text()
         login = self.EditLogin.text()
-        senha = self.EditSenha.text()
-        senha_confirme = self.EditConfirme.text()
         status = self.ComboStatus.currentText()
 
         valor = False
@@ -139,7 +133,7 @@ class principal(QDialog, Ui_Dialog):
     def inclusao(self,usu):   
         try:           
             obj = usu
-
+            print "Incluindo"
             query = QSqlQuery(self.bancoDeDados)
             query.prepare("INSERT INTO usuario (nome,email,funcao,status,login,senha)" "VALUES (?,?,?,?,?,?)")
             query.addBindValue(obj.nome)
@@ -165,7 +159,7 @@ class principal(QDialog, Ui_Dialog):
     def atualizacao(self,usu):
         try:           
             obj = usu
-
+            print "Atualizando"
             query = QSqlQuery(self.bancoDeDados)
             query.prepare("UPDATE usuario SET nome=?,email=?,funcao=?,status=?,login=? WHERE id_usuario=?")
             query.addBindValue(obj.nome)
@@ -182,11 +176,20 @@ class principal(QDialog, Ui_Dialog):
                 QMessageBox.critical(None, "Erro no cadastro do usuario", err.text())    
                 return False    
             else:
-                QMessageBox.information(None, "Cadastro de Usuario", "Usuario alterado com sucesso!" )
+                QMessageBox.information(None, "Cadastro de Usuario", QString.fromUtf8("Usuario alterado com sucesso!\n(Exceto a senha, para mais informações consulte a ajuda)") )
                 return True
         except AttributeError:                
             pass
 
+    def destrava(self):
+        self.EditNome.setEnabled(True)
+        self.EditEmail.setEnabled(True)
+        self.EditFuncao.setEnabled(True)
+        self.EditLogin.setEnabled(True)
+        self.ComboStatus.setEnabled(True)
+        self.EditSenha.setEnabled(True)
+        self.EditConfirme.setEnabled(True)  
+        
 
     # Cria uma nova linha na tabela e limpa o formulario de departamentos
     @pyqtSignature("")        
@@ -198,6 +201,7 @@ class principal(QDialog, Ui_Dialog):
         self.mapeador.setCurrentIndex(linha)
         self.EditSenha.setEnabled(True)
         self.EditConfirme.setEnabled(True)
+        self.destrava()
         self.EditID.clear()
         self.EditNome.clear()
         self.EditEmail.clear()
@@ -212,7 +216,7 @@ class principal(QDialog, Ui_Dialog):
         try:
             is_valid, usu = self.valido()
 
-            if(usu.id!="" and is_valid):
+            if(usu.id!="" and is_valid and usu.senha=="##########"):
                 if(self.atualizacao(usu)):                                            
                     if (self.incluindoUsuario):
                         self.setIncluindo(False)
@@ -220,12 +224,10 @@ class principal(QDialog, Ui_Dialog):
                         self.setEditando(False)
                     self.abrirTabelaUsuario()
             elif(self.inclusao(usu) and is_valid):
-                self.mapeador.submit()
                 if (self.incluindoUsuario):
                     self.setIncluindo(False)
                 if (self.editandoUsuario):
-                    self.setEditando(False)
-                self.usuarioModel.submitAll()        
+                    self.setEditando(False)   
                 self.abrirTabelaUsuario() 
 
         except AttributeError:
@@ -234,24 +236,17 @@ class principal(QDialog, Ui_Dialog):
     @pyqtSignature("")
     def on_Deletar_clicked(self):
         linha = self.usuarioModel.rowCount()
-        self.usuarioModel.removeRow(linha - 1)        
+        self.usuarioModel.removeRow(linha - 1)    
+        self.setIncluindo(False)
+        self.setEditando(False)
         self.EditID.clear()
         self.EditNome.clear()
         self.EditEmail.clear()
         self.EditFuncao.clear()
         self.EditLogin.clear()
         self.EditSenha.clear()
-        self.EditConfirme.clear()
-        self.EditNome.setFocus()
-        self.abrirTabelaUsuario()     
-
-    def preenche(self):
-        self.EditNome.setEnabled(True)
-        self.EditEmail.setEnabled(True)
-        self.EditFuncao.setEnabled(True)
-        self.EditLogin.setEnabled(True)
-        self.EditSenha.setEnabled(True)
-        self.EditConfirme.setEnabled(True)        
+        self.EditConfirme.clear()        
+        self.abrirTabelaUsuario()         
 
     @pyqtSignature("QString")      
     def on_EditNome_textEdited(self, text):
