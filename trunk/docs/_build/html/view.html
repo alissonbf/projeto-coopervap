@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Modulo View &mdash; coopervap v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="coopervap v1.0 documentation" href="index.html" />
+    <link rel="prev" title="Bem-vindo a documentação do Coopervap Estoque" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Bem-vindo a documentação do Coopervap Estoque"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">coopervap v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="modulo-view">
+<span id="view"></span><h1>Modulo View<a class="headerlink" href="#modulo-view" title="Permalink to this headline">¶</a></h1>
+<p>Escrito por:</p>
+<ul class="simple">
+<li>Alisson Barbosa Ferreira, <a class="reference external" href="mailto:alissonbf&#37;&#52;&#48;gmail&#46;com">alissonbf<span>&#64;</span>gmail<span>&#46;</span>com</a></li>
+<li>Alisson Oliveira Ferreira, <a class="reference external" href="mailto:linukiss&#37;&#52;&#48;gmail&#46;com">linukiss<span>&#64;</span>gmail<span>&#46;</span>com</a></li>
+<li>Victor Hugo Neiva, <a class="reference external" href="mailto:victorhugoneiva&#37;&#52;&#48;gmail&#46;com">victorhugoneiva<span>&#64;</span>gmail<span>&#46;</span>com</a></li>
+<li>Wesley Junior</li>
+</ul>
+<p>Criado em:</p>
+<ul class="simple">
+<li>30/08/2010</li>
+</ul>
+<p>Ultima atualização:</p>
+<ul class="simple">
+<li>06/10/2010</li>
+</ul>
+<p>Descrição</p>
+<ul class="simple">
+<li>Este modulo contém as classes que se comunicam com as interfaces graficas e da vida aos seus botões</li>
+</ul>
+<div class="section" id="classe-cadastrousuario">
+<span id="cadatrousuario"></span><h2>Classe CadastroUsuario<a class="headerlink" href="#classe-cadastrousuario" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="importacoes">
+<h3>Importações<a class="headerlink" href="#importacoes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="sys">
+<h4>Sys<a class="headerlink" href="#sys" title="Permalink to this headline">¶</a></h4>
+<p>Usar metodos para comunicar com o sistema:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="re">
+<h4>Re<a class="headerlink" href="#re" title="Permalink to this headline">¶</a></h4>
+<p>Este módulo oferece uma expressão regular correspondente operações semelhantes às encontradas em Perl. Ambos os padrões e sequências a serem pesquisados podem ser sequências de caracteres Unicode como sequências de 8 bits, saiba mais sobre re <a class="reference external" href="http://docs.python.org/library/re.html">aqui</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">re</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyqt4-qtcore">
+<h4>Pyqt4.QtCore<a class="headerlink" href="#pyqt4-qtcore" title="Permalink to this headline">¶</a></h4>
+<p>Este modulo contém as classes centrais não-GUI, incluindo o ciclo de eventos e um sinal do Qt e do mecanismo de slot. Também inclui abstrações independentes de plataforma para Unicode, threads, arquivos mapeados, memória compartilhada, as expressões regulares, e de usuário e configurações do aplicativo, saiba mais sobre Pyqt4.QtCore <a class="reference external" href="http://www.riverbankcomputing.co.uk/static/Docs/PyQt4/pyqt4ref.html">aqui</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyQt4.QtCore</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyqt4-qtgui">
+<h4>PyQt4.QtGui<a class="headerlink" href="#pyqt4-qtgui" title="Permalink to this headline">¶</a></h4>
+<p>Este modulo contém a maioria das classes de GUI, saiba mais sobre PyQt4.QtGui <a class="reference external" href="http://www.riverbankcomputing.co.uk/static/Docs/PyQt4/pyqt4ref.html/">aqui</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyQt4.QtGui</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="telas-guicadastrousuario">
+<h4>telas.GuiCadastroUsuario<a class="headerlink" href="#telas-guicadastrousuario" title="Permalink to this headline">¶</a></h4>
+<p>No pacote telas, saiba mais sobre pacotes <a class="reference external" href="http://www.python.org.br/wiki/ModulosPacotes/">aqui</a>, existe um modulo que contem os dados da tela de cadastro de usuario. Neste modulo estão todas as declarações dos componentes das telas, como tamanho da janela, quais botões vão estar na tela, etc. Este modulo foi gerado com o comando <a class="reference external" href="http://www.opendocs.net/pyqt/pyqt4.html#pyuic4/">pyuic4</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">telas.GuiCadastroUsuario</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="controller">
+<h4>Controller<a class="headerlink" href="#controller" title="Permalink to this headline">¶</a></h4>
+<p>Este modulo contem os metodos que se comunicam com o banco de dados e que efetivão as regras de negocio:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">Controller</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model">
+<h4>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h4>
+<p>Este modulo contem as classes dos objetos que são usados pelo programa:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">Model</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="metodos">
+<span id="id4"></span><h3>Metodos<a class="headerlink" href="#metodos" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="init">
+<h4>__init__<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h4>
+<p>Metodo que é executado quando o classe banco é instanciada, ele é o construtor da classe:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="abrirtabelausuario">
+<h4>abrirTabelaUsuario<a class="headerlink" href="#abrirtabelausuario" title="Permalink to this headline">¶</a></h4>
+<p>Metodo que traz todos os usuarios cadastrados no sistema:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">abrirTabelaUsuario</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setincluindo">
+<h4>setIncluindo<a class="headerlink" href="#setincluindo" title="Permalink to this headline">¶</a></h4>
+<p>Ativa o botão de salvar e cancelar, se o status for True:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">setIncluindo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">status</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref std std-ref">status</em>: Parâmetro que recebe um tipo de dado boolean</p>
+</div>
+<div class="section" id="seteditando">
+<h4>setEditando<a class="headerlink" href="#seteditando" title="Permalink to this headline">¶</a></h4>
+<p>Aiva o botão de salvar e cancelar, se o status for True:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">setEditando</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">status</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref std std-ref">status</em>: Parâmetro que recebe um tipo de dado boolean</p>
+</div>
+<div class="section" id="valido">
+<h4>valido<a class="headerlink" href="#valido" title="Permalink to this headline">¶</a></h4>
+<p>Valida os dados, digitados pelo usuario:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">valido</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inclusao">
+<h4>inclusao<a class="headerlink" href="#inclusao" title="Permalink to this headline">¶</a></h4>
+<p>Insere os dados do usuario no banco:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">inclusao</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">usu</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref std std-ref">usu</em>: Objeto contendo os dados do usuario que será cadastrado</p>
+</div>
+<div class="section" id="atualizacao">
+<h4>atualizacao<a class="headerlink" href="#atualizacao" title="Permalink to this headline">¶</a></h4>
+<p>Atualiza os dados do usuario que estão no banco:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">atualizacao</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">usu</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref std std-ref">usu</em>: Objeto contendo os dados do usuario que será atualizado</p>
+</div>
+<div class="section" id="destrava">
+<h4>destrava<a class="headerlink" href="#destrava" title="Permalink to this headline">¶</a></h4>
+<p>Ativa todos os campos de inserção de dados:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">destrava</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="on-novo-clicked">
+<h4>on_Novo_clicked<a class="headerlink" href="#on-novo-clicked" title="Permalink to this headline">¶</a></h4>
+<p>Cria uma nova linha na tabela e limpa o formulario de departamentos:</p>
+<div class="highlight-python"><pre>@pyqtSignature("")
+on_Novo_clicked(self)</pre>
+</div>
+<p><em class="xref std std-ref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;.</p>
+</div>
+<div class="section" id="on-salvar-clicked">
+<h4>on_Salvar_clicked<a class="headerlink" href="#on-salvar-clicked" title="Permalink to this headline">¶</a></h4>
+<p>Salva os dados no banco de dados depois de validados:</p>
+<div class="highlight-python"><pre>@pyqtSignature("")
+on_Salvar_clicked(self)</pre>
+</div>
+<p><em class="xref std std-ref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;.</p>
+</div>
+<div class="section" id="on-deletar-clicked">
+<h4>on_Deletar_clicked<a class="headerlink" href="#on-deletar-clicked" title="Permalink to this headline">¶</a></h4>
+<p>Desabilita os botões de salvar e cancelar, limpa os campos e se existe uma linha vazia na coluna, limpa a mesma:</p>
+<div class="highlight-python"><pre>@pyqtSignature("")
+on_Deletar_clicked(self)</pre>
+</div>
+<p><em class="xref std std-ref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;.</p>
+</div>
+<div class="section" id="on-editnome-textedited">
+<h4>on_EditNome_textEdited<a class="headerlink" href="#on-editnome-textedited" title="Permalink to this headline">¶</a></h4>
+<p>Desativa os campos de texto de senha e confirmar senha:</p>
+<div class="highlight-python"><pre>@pyqtSignature("QString")
+on_EditNome_textEdited(self, text)</pre>
+</div>
+<p><em class="xref std std-ref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;.</p>
+<p><em class="xref std std-ref">text</em>: texto que esta no widget</p>
+</div>
+<div class="section" id="on-editemail-textedited">
+<h4>on_EditEmail_textEdited<a class="headerlink" href="#on-editemail-textedited" title="Permalink to this headline">¶</a></h4>
+<p>Desativa os campos de texto de senha e confirmar senha:</p>
+<div class="highlight-python"><pre>@pyqtSignature("QString")
+on_EditEmail_textEdited(self, text)</pre>
+</div>
+<p><em class="xref std std-ref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;.</p>
+<p><em class="xref std std-ref">text</em>: texto que esta no widget</p>
+</div>
+<div class="section" id="on-editfuncao-textedited">
+<h4>on_EditFuncao_textEdited<a class="headerlink" href="#on-editfuncao-textedited" title="Permalink to this headline">¶</a></h4>
+<p>Desativa os campos de texto de senha e confirmar senha:</p>
+<div class="highlight-python"><pre>@pyqtSignature("QString")
+on_EditFuncao_textEdited(self, text)</pre>
+</div>
+<p><em class="xref std std-ref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;.</p>
+<p><em class="xref std std-ref">text</em>: texto que esta no widget</p>
+</div>
+<div class="section" id="on-editlogin-textedited">
+<h4>on_EditLogin_textEdited<a class="headerlink" href="#on-editlogin-textedited" title="Permalink to this headline">¶</a></h4>
+<p>Desativa os campos de texto de senha e confirmar senha:</p>
+<div class="highlight-python"><pre>@pyqtSignature("QString")
+on_EditLogin_textEdited(self, text)</pre>
+</div>
+<p><em class="xref std std-ref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;.</p>
+<p><em class="xref std std-ref">text</em>: texto que esta no widget</p>
+</div>
+<div class="section" id="on-combostatus-activated">
+<h4>on_ComboStatus_activated<a class="headerlink" href="#on-combostatus-activated" title="Permalink to this headline">¶</a></h4>
+<p>Desativa os campos de texto de senha e confirmar senha:</p>
+<div class="highlight-python"><pre>@pyqtSignature("QString")
+on_ComboStatus_activated(self, text)</pre>
+</div>
+<p><em class="xref std std-ref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;.</p>
+<p><em class="xref std std-ref">text</em>: texto que esta no widget</p>
+</div>
+<div class="section" id="on-fechar-clicked">
+<h4>on_Fechar_clicked<a class="headerlink" href="#on-fechar-clicked" title="Permalink to this headline">¶</a></h4>
+<p>Fecha a janela:</p>
+<div class="highlight-python"><pre>@pyqtSignature("")
+on_Fechar_clicked(self)</pre>
+</div>
+<p><em class="xref std std-ref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Modulo View</a><ul>
+<li><a class="reference internal" href="#classe-cadastrousuario">Classe CadastroUsuario</a><ul>
+<li><a class="reference internal" href="#importacoes">Importações</a><ul>
+<li><a class="reference internal" href="#sys">Sys</a></li>
+<li><a class="reference internal" href="#re">Re</a></li>
+<li><a class="reference internal" href="#pyqt4-qtcore">Pyqt4.QtCore</a></li>
+<li><a class="reference internal" href="#pyqt4-qtgui">PyQt4.QtGui</a></li>
+<li><a class="reference internal" href="#telas-guicadastrousuario">telas.GuiCadastroUsuario</a></li>
+<li><a class="reference internal" href="#controller">Controller</a></li>
+<li><a class="reference internal" href="#model">Model</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metodos">Metodos</a><ul>
+<li><a class="reference internal" href="#init">__init__</a></li>
+<li><a class="reference internal" href="#abrirtabelausuario">abrirTabelaUsuario</a></li>
+<li><a class="reference internal" href="#setincluindo">setIncluindo</a></li>
+<li><a class="reference internal" href="#seteditando">setEditando</a></li>
+<li><a class="reference internal" href="#valido">valido</a></li>
+<li><a class="reference internal" href="#inclusao">inclusao</a></li>
+<li><a class="reference internal" href="#atualizacao">atualizacao</a></li>
+<li><a class="reference internal" href="#destrava">destrava</a></li>
+<li><a class="reference internal" href="#on-novo-clicked">on_Novo_clicked</a></li>
+<li><a class="reference internal" href="#on-salvar-clicked">on_Salvar_clicked</a></li>
+<li><a class="reference internal" href="#on-deletar-clicked">on_Deletar_clicked</a></li>
+<li><a class="reference internal" href="#on-editnome-textedited">on_EditNome_textEdited</a></li>
+<li><a class="reference internal" href="#on-editemail-textedited">on_EditEmail_textEdited</a></li>
+<li><a class="reference internal" href="#on-editfuncao-textedited">on_EditFuncao_textEdited</a></li>
+<li><a class="reference internal" href="#on-editlogin-textedited">on_EditLogin_textEdited</a></li>
+<li><a class="reference internal" href="#on-combostatus-activated">on_ComboStatus_activated</a></li>
+<li><a class="reference internal" href="#on-fechar-clicked">on_Fechar_clicked</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Bem-vindo a documentação do Coopervap Estoque</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/view.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Bem-vindo a documentação do Coopervap Estoque"
+             >previous</a> |</li>
+        <li><a href="index.html">coopervap v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, TI Livre.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0b2.
+    </div>
+  </body>
+</html>
