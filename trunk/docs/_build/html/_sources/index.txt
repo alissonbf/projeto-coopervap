@@ -11,7 +11,9 @@ Contents:
 .. toctree::
    :maxdepth: 2
     
+   model.rst
    view.rst
+   controller.rst
 
 Indices and tables
 ==================

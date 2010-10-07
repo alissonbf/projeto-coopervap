@@ -135,6 +135,9 @@ Valida os dados, digitados pelo usuario::
 
     valido(self)
 
+    return valor,usu
+
+:ref:`return`: Este metodo retorna uma variavel valor, que pode ser True se todos os campos digitados forem validos, senão forem ela fica com o valor False. O metodo também retorna o objeto usu, que é uma instancia da classe usuario, criada se todos os campos forem validos. 
 
 inclusao
 --------
@@ -142,8 +145,14 @@ inclusao
 Insere os dados do usuario no banco::
 
     inclusao(self,usu)
+    
+    return False
+    
+    return True
 
 :ref:`usu`: Objeto contendo os dados do usuario que será cadastrado
+
+:ref:`return`: Este metodo retorna True, se o usuario for inserido com sucesso, senão retorna False
 
 atualizacao
 -----------
@@ -152,8 +161,13 @@ Atualiza os dados do usuario que estão no banco::
 
     atualizacao(self,usu)
 
+    return False
+    
+    return True
+
 :ref:`usu`: Objeto contendo os dados do usuario que será atualizado
 
+:ref:`return`: Este metodo retorna True, se o usuario for atualizado com sucesso, senão retorna False
 
 destrava
 --------
