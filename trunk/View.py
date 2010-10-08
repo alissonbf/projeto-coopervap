@@ -35,7 +35,7 @@ from Model import *
 
 class CadastroUsuario(QDialog, Ui_Dialog):
     def __init__(self, parent=None):
-        super(principal, self).__init__(parent)
+        super(CadastroUsuario, self).__init__(parent)
         self.setupUi(self)
 
         self.setIncluindo(False)
