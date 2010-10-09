@@ -12,7 +12,7 @@
 #                                                          #
 #  Criado em: 30/08/2010			                       #
 #						                                   #
-#  Ultima atualizacao: 06/10/2010		                   #
+#  Ultima atualizacao: 09/10/2010		                   #
 #						                                   #
 #  [Descricao]##############################################
 #					                                       #
@@ -25,15 +25,44 @@ import sys
 import re
 
 from PyQt4.QtCore import *                 
-from PyQt4.QtGui import *                  
-
+from PyQt4.QtGui import *         
 
 from telas.GuiCadastroUsuario import *
+from telas.GuiPrincipal import *
 
 from Controller import *
 from Model import *
 
-class CadastroUsuario(QDialog, Ui_Dialog):
+
+#-& CLASSE &-#
+class Principal(QMainWindow, Ui_principal):
+    def __init__(self, parent=None):
+        super(Principal, self).__init__(parent)
+        self.setupUi(self)
+        
+        self.bancoDeDados = abrirBancoDeDados(self)
+
+        self.MdiArea = QMdiArea(self)
+        self.setCentralWidget(self.MdiArea)
+
+    # Mostra janela para manutenção de usuarios, paramentro obj é a janela a ser aberta
+    def mostrarSubwindow(self, obj):
+        window = obj               
+        SubWindow = QMdiSubWindow()
+        SubWindow.setWidget(window)        
+        SubWindow.setAttribute(Qt.WA_DeleteOnClose)
+        self.MdiArea.addSubWindow(SubWindow)
+        SubWindow.show()
+    
+    @pyqtSignature("")
+    def on_actionAdcionar_usuario_triggered(self):          
+        cadusu = CadastroUsuario()
+        self.mostrarSubwindow(cadusu)
+
+
+
+#-& CLASSE &-#
+class CadastroUsuario(QWidget, Ui_Dialog):
     def __init__(self, parent=None):
         super(CadastroUsuario, self).__init__(parent)
         self.setupUi(self)
@@ -43,7 +72,7 @@ class CadastroUsuario(QDialog, Ui_Dialog):
         self.incluindoUsuario = False        
         self.editandoUsuario = False
 
-        self.bancoDeDados = abrirBancoDeDados(self) 
+        self.bancoDeDados = QSqlDatabase.database("coopervap-bd")  
         self.usuarioModel = QSqlTableModel(self, self.bancoDeDados)
         self.abrirTabelaUsuario()
 
