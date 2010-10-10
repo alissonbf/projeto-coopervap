@@ -29,6 +29,9 @@ from PyQt4.QtGui import *
 
 from telas.GuiCadastroUsuario import *
 from telas.GuiPrincipal import *
+from telas.GuiSobre import *
+from telas.GuiLicenca import *
+from telas.GuiCreditos import *
 
 from Controller import *
 from Model import *
@@ -41,7 +44,8 @@ class Principal(QMainWindow, Ui_principal):
         self.setupUi(self)
         
         self.bancoDeDados = abrirBancoDeDados(self)
-
+        
+        # Cria a area onde as sub-janelas serão abertas
         self.MdiArea = QMdiArea(self)
         self.setCentralWidget(self.MdiArea)
 
@@ -55,10 +59,53 @@ class Principal(QMainWindow, Ui_principal):
         SubWindow.show()
     
     @pyqtSignature("")
-    def on_actionAdcionar_usuario_triggered(self):          
+    def on_actionCadastrar_Usuarios_triggered(self):          
         cadusu = CadastroUsuario()
         self.mostrarSubwindow(cadusu)
 
+    @pyqtSignature("")
+    def on_actionDocumenta_o_triggered(self):          
+        pass
+
+    @pyqtSignature("")
+    def on_actionAjuda_Programa_triggered(self):          
+        pass
+
+    @pyqtSignature("")
+    def on_actionSobre_triggered(self):          
+        sobre = Sobre()
+        sobre.exec_()
+
+
+#-& CLASSE &-#
+class Sobre(QDialog, Ui_SobreDialog):
+    def __init__(self, parent=None):
+        super(Sobre, self).__init__(parent)
+        self.setupUi(self)
+
+    @pyqtSignature("")
+    def on_creditos_clicked(self):          
+        creditos = Creditos()
+        creditos.exec_()
+
+    @pyqtSignature("")
+    def on_Licenca_clicked(self):
+        licenca = Licenca()
+        licenca.exec_()
+
+
+#-& CLASSE &-#
+class Creditos(QDialog, Ui_creditos):
+    def __init__(self, parent=None):
+        super(Creditos, self).__init__(parent)
+        self.setupUi(self)
+
+
+#-& CLASSE &-#
+class Licenca(QDialog, Ui_licenca):
+    def __init__(self, parent=None):
+        super(Licenca, self).__init__(parent)
+        self.setupUi(self)
 
 
 #-& CLASSE &-#
