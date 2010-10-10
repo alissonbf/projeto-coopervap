@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'licenca.ui'
 #
-# Created: Sun Oct 10 00:32:23 2010
+# Created: Sun Oct 10 11:18:32 2010
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -16,6 +16,7 @@ class Ui_licenca(object):
         self.verticalLayout = QtGui.QVBoxLayout(licenca)
         self.verticalLayout.setObjectName("verticalLayout")
         self.textEdit = QtGui.QTextEdit(licenca)
+        self.textEdit.setEnabled(True)
         self.textEdit.setObjectName("textEdit")
         self.verticalLayout.addWidget(self.textEdit)
         self.buttonBox = QtGui.QDialogButtonBox(licenca)
@@ -30,7 +31,7 @@ class Ui_licenca(object):
         QtCore.QMetaObject.connectSlotsByName(licenca)
 
     def retranslateUi(self, licenca):
-        licenca.setWindowTitle(QtGui.QApplication.translate("licenca", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        licenca.setWindowTitle(QtGui.QApplication.translate("licenca", "Licença", None, QtGui.QApplication.UnicodeUTF8))
         self.textEdit.setHtml(QtGui.QApplication.translate("licenca", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

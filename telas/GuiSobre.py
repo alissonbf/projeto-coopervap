@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'sobre.ui'
 #
-# Created: Sun Oct 10 00:20:30 2010
+# Created: Sun Oct 10 11:23:24 2010
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PyQt4 import QtCore, QtGui
 class Ui_SobreDialog(object):
     def setupUi(self, SobreDialog):
         SobreDialog.setObjectName("SobreDialog")
-        SobreDialog.resize(482, 366)
+        SobreDialog.resize(482, 327)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/newPrefix/images/logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         SobreDialog.setWindowIcon(icon)
@@ -45,6 +45,8 @@ class Ui_SobreDialog(object):
         self.label_5.setObjectName("label_5")
         self.verticalLayout_2.addWidget(self.label_5)
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
+        spacerItem = QtGui.QSpacerItem(20, 31, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.creditos = QtGui.QPushButton(SobreDialog)
