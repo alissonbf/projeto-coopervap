@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="img.qrc">
-    <normaloff>:/newPrefix/images/Profile.png</normaloff>:/newPrefix/images/Profile.png</iconset>
+    <normaloff>:/newPrefix/images/User-icon.png</normaloff>:/newPrefix/images/User-icon.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
