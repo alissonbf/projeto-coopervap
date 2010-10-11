@@ -23,6 +23,7 @@
 
 import sys
 import re
+import webbrowser
 
 from PyQt4.QtCore import *                 
 from PyQt4.QtGui import *         
@@ -32,6 +33,7 @@ from telas.GuiPrincipal import *
 from telas.GuiSobre import *
 from telas.GuiLicenca import *
 from telas.GuiCreditos import *
+from telas.GuiMenu import *
 
 from Controller import *
 from Model import *
@@ -44,10 +46,14 @@ class Principal(QMainWindow, Ui_principal):
         self.setupUi(self)
         
         self.bancoDeDados = abrirBancoDeDados(self)
-        
+
         # Cria a area onde as sub-janelas serão abertas
         self.MdiArea = QMdiArea(self)
         self.setCentralWidget(self.MdiArea)
+
+
+    def __done__(self):
+        fecharBancoDeDados(self.bancoDeDados)
 
     # Mostra janela para manutenção de usuarios, paramentro obj é a janela a ser aberta
     def mostrarSubwindow(self, obj):
@@ -57,6 +63,7 @@ class Principal(QMainWindow, Ui_principal):
         SubWindow.setAttribute(Qt.WA_DeleteOnClose)
         self.MdiArea.addSubWindow(SubWindow)
         SubWindow.show()
+
     
     @pyqtSignature("")
     def on_actionCadastrar_Usuarios_triggered(self):          
@@ -65,16 +72,17 @@ class Principal(QMainWindow, Ui_principal):
 
     @pyqtSignature("")
     def on_actionDocumenta_o_triggered(self):          
-        pass
+        webbrowser.open('docs/_build/html/index.html')
 
     @pyqtSignature("")
     def on_actionAjuda_Programa_triggered(self):          
-        pass
+        webbrowser.open('docs/manual do usuario/_build/html/index.html')
 
     @pyqtSignature("")
     def on_actionSobre_triggered(self):          
         sobre = Sobre()
         sobre.exec_()
+
 
 
 #-& CLASSE &-#
@@ -92,6 +100,10 @@ class Sobre(QDialog, Ui_SobreDialog):
     def on_Licenca_clicked(self):
         licenca = Licenca()
         licenca.exec_()
+
+    @pyqtSignature("")
+    def on_tilivre_clicked(self):
+        webbrowser.open('http://www.tilivre.net.br')
 
 
 #-& CLASSE &-#
@@ -137,6 +149,11 @@ class CadastroUsuario(QWidget, Ui_Dialog):
         self.connect(self.tabela.selectionModel(), SIGNAL("currentRowChanged(QModelIndex,QModelIndex)"), self.mapeador, SLOT("setCurrentModelIndex(QModelIndex)"))
        
         self.destrava() 
+
+    def __done__(self):
+        QSqlDatabase.removeDatabase("coopervap-bd")
+        
+
 
     # Preence a tabela com os dados que estão no banco de dados
     def abrirTabelaUsuario(self):        
