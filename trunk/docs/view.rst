@@ -10,7 +10,7 @@ Escrito por:
 * Alisson Barbosa Ferreira, alissonbf@gmail.com                   
 * Alisson Oliveira Ferreira, linukiss@gmail.com                  
 * Victor Hugo Neiva, victorhugoneiva@gmail.com                          
-* Wesley Junior                              
+* Wesley Junior, www.wesley@gmail.com                              
                                                           
 Criado em: 
 
