@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'licenca.ui'
 #
-# Created: Sun Oct 10 11:18:32 2010
+# Created: Sun Oct 10 22:48:07 2010
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,6 +17,7 @@ class Ui_licenca(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.textEdit = QtGui.QTextEdit(licenca)
         self.textEdit.setEnabled(True)
+        self.textEdit.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse)
         self.textEdit.setObjectName("textEdit")
         self.verticalLayout.addWidget(self.textEdit)
         self.buttonBox = QtGui.QDialogButtonBox(licenca)
