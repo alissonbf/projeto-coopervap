@@ -2,23 +2,23 @@
 # -*- coding: utf-8 -*-             
 
 ## [Ficha]##################################################
-#	                                                       #					           
-#  Nome: Modulo View				                       #
+#	                                                   #					           
+#  Nome: Modulo View				           #
 #                                                          #
 #  Escrito por: Alisson Barbosa Ferreira                   #
 #               Alisson Oliveira Ferreira                  #
 #               Victor Hugo Neiva                          #
 #               Wesley Junior                              #
 #                                                          #
-#  Criado em: 30/08/2010			                       #
-#						                                   #
-#  Ultima atualizacao: 24/11/2010		                   #
-#						                                   #
+#  Criado em: 30/08/2010			           #
+#						           #
+#  Ultima atualizacao: 24/11/2010		           #
+#						           #
 #  [Descricao]##############################################
-#					                                       #
+#					                   #
 #  Este script contem as classes que se comunicam com      #
 #  as interfaces graficas e da vida aos seus botões        #
-#					                                       #
+#					                   #
 ############################################################
 
 import sys
@@ -48,7 +48,8 @@ class Principal(QMainWindow, Ui_principal):
         super(Principal, self).__init__(parent)
         self.setupUi(self)
         
-        self.bancoDeDados = abrirBancoDeDados(self)
+        abrirBancoDeDados(self)
+        self.bancoDeDados = QSqlDatabase.database("coopervap-bd")
 
         # Cria a area onde as sub-janelas serão abertas
         self.MdiArea = QMdiArea(self)
