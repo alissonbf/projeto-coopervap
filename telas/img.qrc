@@ -1,5 +1,10 @@
 <RCC>
   <qresource prefix="newPrefix">
+    <file>images/find.gif</file>
+    <file>images/BusinessTux.png</file>
+    <file>images/button_cancel2.png</file>
+    <file>images/exit.png</file>
+    <file>images/banner.png</file>
     <file>images/add_user.png</file>
     <file>images/add.png</file>
     <file>images/application-exit.png</file>
