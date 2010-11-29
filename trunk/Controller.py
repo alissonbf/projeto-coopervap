@@ -2,22 +2,22 @@
 # -*- coding: utf-8 -*-             
 
 ## [Ficha]##################################################
-#	                                                       #					           
-#  Nome: Modulo Controler			                       #
+#	                                                   #					           
+#  Nome: Modulo Controler			           #
 #  Escrito por: Alisson Barbosa Ferreira                   #
 #               Alisson Oliveira Ferreira                  #
 #               Victor Hugo Neiva                          #
 #               Wesley Junior                              #
 #                                                          #
-#  Criado em: 30/08/2010			                       #
-#						                                   #
-#  Ultima atualizacao: 06/10/2010		                   #
-#						                                   #
+#  Criado em: 30/08/2010			           #
+#						           #
+#  Ultima atualizacao: 06/10/2010		           #
+#						           #
 #  [Descricao]##############################################
-#					                                       #
+#					                   #
 #  Este modulo contem os metodos que se comunicam com      #
 #  o banco de dados e que efetivão as regras de negocio.   #
-#					                                       #
+#					                   #
 ############################################################
 
 import sys
@@ -33,12 +33,10 @@ def abrirBancoDeDados(self):
         bancoDeDados.setDatabaseName("coopervap")
         bancoDeDados.setPassword("postgres")
         bancoDeDados.setUserName("postgres")
-        bancoDeDados.open()
-        con = QSqlDatabase.database("coopervap-bd")        
+        bancoDeDados.open()        
     else:
-        QMessageBox.critical(None, "Driver Postgre", QString.fromUtf8("Driver Não Encontrado"))    
+        QMessageBox.critical(None, "Driver Postgre", QString.fromUtf8("Driver Não Encontrado"))       
     
-    return con
 
 def fecharBancoDeDados(self,bancoDeDados):
     bancoDeDados = bancoDeDados
