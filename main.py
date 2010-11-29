@@ -1,4 +1,4 @@
-#!/bin/env python                         
+#! /usr/bin/python
 # -*- coding: utf-8 -*-             
 
 ## [Ficha]##################################################
@@ -23,11 +23,11 @@
 import sys
 from PyQt4.QtCore import *                 
 from PyQt4.QtGui import *                  
-from View import *     
+from View import *
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)      
     prin = Principal()
-    prin.showMaximized()
+    prin.show()   
     app.exec_()
     

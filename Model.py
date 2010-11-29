@@ -30,5 +30,17 @@ class usuario():
         self.login = login
         self.senha = senha
         self.id = id_usu
+
+class equipamento():
+    def __init__(self, nome, marca, unidade, quantidade, estoque, id_resp, usuario, id_equip=None, patrimonio=None):
+        self.nome = nome
+        self.marca = marca
+        self.unidade = unidade
+        self.quantidade = quantidade
+        self.patrimonio = patrimonio
+        self.estoque = estoque
+        self.id_equip = id_equip
+        self.id_resp = id_resp
+        self.usuario = usuario
        
         

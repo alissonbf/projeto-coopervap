@@ -12,7 +12,7 @@
 #                                                          #
 #  Criado em: 30/08/2010			                       #
 #						                                   #
-#  Ultima atualizacao: 09/10/2010		                   #
+#  Ultima atualizacao: 24/11/2010		                   #
 #						                                   #
 #  [Descricao]##############################################
 #					                                       #
@@ -28,12 +28,15 @@ import webbrowser
 from PyQt4.QtCore import *                 
 from PyQt4.QtGui import *         
 
-from telas.GuiCadastroUsuario import *
 from telas.GuiPrincipal import *
+
+from telas.GuiCadastroUsuario import *
+from telas.GuiCadastroEquipamento import *
+
 from telas.GuiSobre import *
 from telas.GuiLicenca import *
 from telas.GuiCreditos import *
-from telas.GuiMenu import *
+
 
 from Controller import *
 from Model import *
@@ -49,7 +52,7 @@ class Principal(QMainWindow, Ui_principal):
 
         # Cria a area onde as sub-janelas serão abertas
         self.MdiArea = QMdiArea(self)
-        self.setCentralWidget(self.MdiArea)
+        
 
 
     def __done__(self):
@@ -64,6 +67,34 @@ class Principal(QMainWindow, Ui_principal):
         self.MdiArea.addSubWindow(SubWindow)
         SubWindow.show()
 
+    # Verifica se o usuario existe no banco
+    def is_exist(self):
+        user=self.EditUser.text()
+        senha=self.EditSenha.text()
+        query = QSqlQuery(self.bancoDeDados)
+        query.prepare("SELECT COUNT(*) FROM usuario WHERE login=? and senha=? and status=?")
+        query.addBindValue(user)
+        query.addBindValue(senha)
+        query.addBindValue("Ativo")
+        query.exec_()
+        while (query.next()):
+            var = query.value(0).toInt()
+            if var[0] == 1:
+                return True
+            else:
+                return False 
+
+
+    @pyqtSignature("")
+    def on_btEntrar_clicked(self):
+        if self.is_exist():
+            self.setCentralWidget(self.MdiArea)
+            self.menubar.setEnabled(True)
+            self.toolBar.setEnabled(True)
+            self.showMaximized()
+        else:
+            msg = QMessageBox.warning(self, QString.fromUtf8("Falha na autenticação"),QString.fromUtf8("Este usuário não existe ou foi desativado!"), QMessageBox.Close)
+ 
     
     @pyqtSignature("")
     def on_actionCadastrar_Usuarios_triggered(self):          
@@ -71,8 +102,13 @@ class Principal(QMainWindow, Ui_principal):
         self.mostrarSubwindow(cadusu)
 
     @pyqtSignature("")
+    def on_actionCadastrar_Equipamentos_triggered(self):          
+        cadequp = CadastroEquipamento()
+        self.mostrarSubwindow(cadequp)
+
+    @pyqtSignature("")
     def on_actionDocumenta_o_triggered(self):          
-        webbrowser.open('docs/_build/html/index.html')
+        webbrowser.open('docs/Manual desenvolvedor/_build/html/index.html')
 
     @pyqtSignature("")
     def on_actionAjuda_Programa_triggered(self):          
@@ -82,6 +118,12 @@ class Principal(QMainWindow, Ui_principal):
     def on_actionSobre_triggered(self):          
         sobre = Sobre()
         sobre.exec_()
+
+    @pyqtSignature("")
+    def on_actionSair_triggered(self):          
+        quit()
+
+
 
 
 
@@ -146,9 +188,8 @@ class CadastroUsuario(QWidget, Ui_Dialog):
         self.mapeador.setSubmitPolicy(QDataWidgetMapper.ManualSubmit)       
         
 
-        self.connect(self.tabela.selectionModel(), SIGNAL("currentRowChanged(QModelIndex,QModelIndex)"), self.mapeador, SLOT("setCurrentModelIndex(QModelIndex)"))
-       
-        self.destrava() 
+        self.connect(self.tabela.selectionModel(), SIGNAL("currentRowChanged(QModelIndex,QModelIndex)"), self.mapeador, SLOT("setCurrentModelIndex(QModelIndex)"))      
+         
 
     def __done__(self):
         QSqlDatabase.removeDatabase("coopervap-bd")
@@ -226,7 +267,6 @@ class CadastroUsuario(QWidget, Ui_Dialog):
     def inclusao(self,usu):   
         try:           
             obj = usu
-            print "Incluindo"
             query = QSqlQuery(self.bancoDeDados)
             query.prepare("INSERT INTO usuario (nome,email,funcao,status,login,senha)" "VALUES (?,?,?,?,?,?)")
             query.addBindValue(obj.nome)
@@ -252,7 +292,6 @@ class CadastroUsuario(QWidget, Ui_Dialog):
     def atualizacao(self,usu):
         try:           
             obj = usu
-            print "Atualizando"
             query = QSqlQuery(self.bancoDeDados)
             query.prepare("UPDATE usuario SET nome=?,email=?,funcao=?,status=?,login=? WHERE id_usuario=?")
             query.addBindValue(obj.nome)
@@ -282,12 +321,23 @@ class CadastroUsuario(QWidget, Ui_Dialog):
         self.EditLogin.setEnabled(True)
         self.ComboStatus.setEnabled(True)
         self.EditSenha.setEnabled(True)
-        self.EditConfirme.setEnabled(True)  
+        self.EditConfirme.setEnabled(True) 
+
+    # Desativa todos os campos de inserção de dados
+    def trava(self):
+        self.EditNome.setEnabled(False)
+        self.EditEmail.setEnabled(False)
+        self.EditFuncao.setEnabled(False)
+        self.EditLogin.setEnabled(False)
+        self.ComboStatus.setEnabled(False)
+        self.EditSenha.setEnabled(False)
+        self.EditConfirme.setEnabled(False)   
         
 
     # Cria uma nova linha na tabela e limpa o formulario de departamentos
     @pyqtSignature("")        
     def on_Novo_clicked(self):
+        self.destrava()
         self.setIncluindo(True)
         linha = self.usuarioModel.rowCount()
         self.mapeador.submit()
@@ -331,6 +381,7 @@ class CadastroUsuario(QWidget, Ui_Dialog):
     # Desabilita os botões de salvar e cancelar, limpa os campos e se existe uma linha vazia na coluna, limpa a mesma.
     @pyqtSignature("")
     def on_Deletar_clicked(self):
+        self.trava()
         linha = self.usuarioModel.rowCount()
         self.usuarioModel.removeRow(linha - 1)    
         self.setIncluindo(False)
@@ -387,8 +438,72 @@ class CadastroUsuario(QWidget, Ui_Dialog):
             
         
 
-        
+#-& CLASSE &-#
+class CadastroEquipamento(QWidget, Ui_equipamento):
+    def __init__(self, parent=None):
+        super(CadastroEquipamento, self).__init__(parent)
+        self.setupUi(self)
 
+        self.setIncluindo(False)
+        self.setEditando(False)
+        self.incluindoEquipamento = False        
+        self.editandoEquipamento = False
+
+        self.bancoDeDados = QSqlDatabase.database("coopervap-bd")
+        self.equipamentoModel = QSqlTableModel(self, self.bancoDeDados)
+        #self.abrirTabelaEquipamento()
+
+        self.mapeador = QDataWidgetMapper()
+        self.mapeador.setModel(self.equipamentoModel)
+        self.mapeador.addMapping(self.EditID, 0)
+        self.mapeador.addMapping(self.EditNome, 1)
+        self.mapeador.addMapping(self.EditMarca, 2)
+        self.mapeador.addMapping(self.EditUnidade, 3)
+        self.mapeador.addMapping(self.spinQtd, 4)
+        self.mapeador.addMapping(self.spinEstMin, 5)
+        self.mapeador.addMapping(self.EditPatrimonio, 6)
+        self.mapeador.addMapping(self.comboReponsavel, 7)
+        self.mapeador.setSubmitPolicy(QDataWidgetMapper.ManualSubmit)   
+        
+    def __done__(self):
+        QSqlDatabase.removeDatabase("coopervap-bd")
+
+    # Preence a tabela com os dados que estão no banco de dados
+    def abrirTabelaEquipamento(self):        
+        consulta = "SELECT id_usuario,nome,email,funcao,status,login FROM usuario ORDER BY id_usuario"     
+        self.equipamentoModel.setQuery(QSqlQuery(consulta, self.bancoDeDados))
+
+        self.equipamentoModel.setHeaderData(0, Qt.Horizontal, "ID")
+        self.equipamentoModel.setHeaderData(1, Qt.Horizontal, "Nome")
+        self.equipamentoModel.setHeaderData(2, Qt.Horizontal, "Marca")
+        self.equipamentoModel.setHeaderData(3, Qt.Horizontal, "Unidade")
+        self.equipamentoModel.setHeaderData(4, Qt.Horizontal, "Qtd")
+        self.equipamentoModel.setHeaderData(5, Qt.Horizontal, "Estoque Min")
+        self.equipamentoModel.setHeaderData(6, Qt.Horizontal, QString.fromUtf8("Patrimônio"))
+        self.equipamentoModel.setHeaderData(7, Qt.Horizontal, QString.fromUtf8("Responsável"))
+        self.equipamentoModel.setEditStrategy(QSqlTableModel.OnManualSubmit)
+        
+        self.tabela.setModel(self.equipamentoModel)  
+
+
+    # Ativa o botão de salvar e  cancelar, se o status for True
+    def setIncluindo(self,status):
+        self.incluindoEquipamento = status
+        self.btSalvar.setEnabled(self.incluindoEquipamento)
+        if (self.incluindoEquipamento):
+            self.btCancelar.setEnabled(self.incluindoEquipamento)
+        else:
+            self.btCancelar.setEnabled(self.incluindoEquipamento)
+    
+
+    # Ativa o botão de salvar e cancelar, se o status for True
+    def setEditando(self,status):
+        self.editandoEquipamento = status
+        self.btSalvar.setEnabled(self.editandoEquipamento)
+        if (self.editandoEquipamento):
+            self.btCancelar.setEnabled(self.editandoEquipamento)
+        else:
+           self.btCancelar.setEnabled(self.editandoEquipamento)
 
 
 
