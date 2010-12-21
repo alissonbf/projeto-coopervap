@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'principal.ui'
 #
-# Created: Thu Nov 25 00:22:37 2010
+# Created: Thu Dec  2 14:12:44 2010
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -203,7 +203,6 @@ class Ui_principal(object):
         self.menuCadastros.addAction(self.actionCadastrar_Tecnicos)
         self.menuCadastros.addAction(self.actionCadastrar_Usuarios)
         self.menuCadastros.addAction(self.actionCadastrar_Departamentos)
-        self.menuCadastros.addAction(self.actionCadastrar_SubDepartamentos)
         self.menuPedidos.addAction(self.actionRealizar_Pedido_de_Compra)
         self.menuPedidos.addAction(self.actionRealizar_Baixa_no_Estoque)
         self.menuAjuda.addSeparator()
@@ -216,11 +215,11 @@ class Ui_principal(object):
         self.menubar.addAction(self.menuAjuda.menuAction())
         self.toolBar.addAction(self.actionRealizar_Pedido_de_Compra)
         self.toolBar.addAction(self.actionRealizar_Baixa_no_Estoque)
+        self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionCadastrar_Usuarios)
         self.toolBar.addAction(self.actionCadastrar_Tecnicos)
         self.toolBar.addAction(self.actionCadastrar_Equipamentos)
         self.toolBar.addAction(self.actionCadastrar_Departamentos)
-        self.toolBar.addAction(self.actionCadastrar_SubDepartamentos)
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionSair)
 
@@ -233,6 +232,7 @@ class Ui_principal(object):
         self.label.setText(QtGui.QApplication.translate("principal", "Usuário", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("principal", "Senha", None, QtGui.QApplication.UnicodeUTF8))
         self.btEntrar.setText(QtGui.QApplication.translate("principal", "Entrar", None, QtGui.QApplication.UnicodeUTF8))
+        self.btEntrar.setShortcut(QtGui.QApplication.translate("principal", "Return", None, QtGui.QApplication.UnicodeUTF8))
         self.menuCadastros.setTitle(QtGui.QApplication.translate("principal", "Cadastros", None, QtGui.QApplication.UnicodeUTF8))
         self.menuPedidos.setTitle(QtGui.QApplication.translate("principal", "Operações", None, QtGui.QApplication.UnicodeUTF8))
         self.menuAjuda.setTitle(QtGui.QApplication.translate("principal", "Ajuda", None, QtGui.QApplication.UnicodeUTF8))

@@ -199,6 +199,9 @@ border-radius:4px;</string>
             <property name="text">
              <string>Entrar</string>
             </property>
+            <property name="shortcut">
+             <string>Return</string>
+            </property>
            </widget>
           </item>
          </layout>
@@ -258,7 +261,6 @@ border-radius:4px;</string>
     <addaction name="actionCadastrar_Tecnicos"/>
     <addaction name="actionCadastrar_Usuarios"/>
     <addaction name="actionCadastrar_Departamentos"/>
-    <addaction name="actionCadastrar_SubDepartamentos"/>
    </widget>
    <widget class="QMenu" name="menuPedidos">
     <property name="title">
@@ -306,11 +308,11 @@ border-radius:4px;</string>
    </attribute>
    <addaction name="actionRealizar_Pedido_de_Compra"/>
    <addaction name="actionRealizar_Baixa_no_Estoque"/>
+   <addaction name="separator"/>
    <addaction name="actionCadastrar_Usuarios"/>
    <addaction name="actionCadastrar_Tecnicos"/>
    <addaction name="actionCadastrar_Equipamentos"/>
    <addaction name="actionCadastrar_Departamentos"/>
-   <addaction name="actionCadastrar_SubDepartamentos"/>
    <addaction name="separator"/>
    <addaction name="actionSair"/>
   </widget>
