@@ -28,23 +28,9 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QPushButton" name="btNovo">
-        <property name="text">
-         <string>Novo</string>
-        </property>
-        <property name="icon">
-         <iconset resource="img.qrc">
-          <normaloff>:/newPrefix/images/add.png</normaloff>:/newPrefix/images/add.png</iconset>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="btSalvar">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="text">
          <string>Salvar</string>
@@ -126,21 +112,21 @@
         <item row="3" column="1">
          <widget class="QLineEdit" name="EditUnidade">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
          <widget class="QLineEdit" name="EditMarca">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
          <widget class="QLineEdit" name="EditNome">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -158,33 +144,6 @@
         <property name="fieldGrowthPolicy">
          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
         </property>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_5">
-          <property name="text">
-           <string>Patrimonio</string>
-          </property>
-          <property name="buddy">
-           <cstring>EditPatrimonio</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="EditPatrimonio">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="echoMode">
-           <enum>QLineEdit::Normal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_6">
-          <property name="text">
-           <string>Responsavel</string>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label_8">
           <property name="text">
@@ -195,7 +154,7 @@
         <item row="0" column="1">
          <widget class="QSpinBox" name="spinQtd">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -209,14 +168,21 @@
         <item row="1" column="1">
          <widget class="QSpinBox" name="spinEstMin">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
          </widget>
         </item>
-        <item row="3" column="1">
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Responsavel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
          <widget class="QComboBox" name="comboReponsavel">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -298,15 +264,18 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>EditID</tabstop>
   <tabstop>EditNome</tabstop>
   <tabstop>EditMarca</tabstop>
   <tabstop>EditUnidade</tabstop>
-  <tabstop>EditPatrimonio</tabstop>
+  <tabstop>spinQtd</tabstop>
+  <tabstop>spinEstMin</tabstop>
+  <tabstop>comboReponsavel</tabstop>
   <tabstop>btSalvar</tabstop>
-  <tabstop>btNovo</tabstop>
-  <tabstop>EditID</tabstop>
-  <tabstop>btCancelar</tabstop>
   <tabstop>tabela</tabstop>
+  <tabstop>EditPesquisa</tabstop>
+  <tabstop>btCancelar</tabstop>
+  <tabstop>btBusca</tabstop>
  </tabstops>
  <resources>
   <include location="img.qrc"/>
