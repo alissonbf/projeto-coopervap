@@ -9,7 +9,7 @@
 #               Victor Hugo Neiva                          #
 #               Wesley Junior                              #
 #                                                          #
-#  Criado em: 30/08/2010			           #
+#  Criado em: 29/11/2010			           #
 #						           #
 #  Ultima atualizacao: 06/10/2010		           #
 #						           #
@@ -37,13 +37,13 @@ def abrirBancoDeDados(self):
     else:
         QMessageBox.critical(None, "Driver Postgre", QString.fromUtf8("Driver Não Encontrado"))       
     
-
+"""
 def fecharBancoDeDados(self,bancoDeDados):
     bancoDeDados = bancoDeDados
     # Fechar conexao com o banco de dados
     bancoDeDados.close()
     QSqlDatabase.removeDatabase("coopervap-bd")
-
+"""
 def driverPostgreOK(self):
     return QSqlDatabase.isDriverAvailable("QPSQL")
 

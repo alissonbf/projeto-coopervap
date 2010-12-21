@@ -2,21 +2,21 @@
 # -*- coding: utf-8 -*-             
 
 ## [Ficha]##################################################
-#	                                                       #					           
-#  Nome: Modulo main				                       #
+#	                                                   #					           
+#  Nome: Modulo main				           #
 #  Escrito por: Alisson Barbosa Ferreira                   #
 #               Alisson Oliveira Ferreira                  #
 #               Victor Hugo Neiva                          #
 #               Wesley Junior                              #
 #                                                          #
-#  Criado em: 30/08/2010			                       #
-#						                                   #
-#  Ultima atualizacao: 06/10/2010		                   #
-#						                                   #
+#  Criado em: 30/08/2010			           #
+#						           #
+#  Ultima atualizacao: 06/10/2010		           #
+#						           #
 #  [Descricao]##############################################
-#					                                       #
+#					                   #
 #  Script principal.                                       #
-#					                                       #
+#					                   #
 ############################################################
 
 

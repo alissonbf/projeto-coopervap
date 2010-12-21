@@ -20,10 +20,9 @@
 #  as interfaces graficas e da vida aos seus botões        #
 #					                   #
 ############################################################
-
-import sys
 import re
 import webbrowser
+import time
 
 from PyQt4.QtCore import *                 
 from PyQt4.QtGui import *         
@@ -32,6 +31,8 @@ from telas.GuiPrincipal import *
 
 from telas.GuiCadastroUsuario import *
 from telas.GuiCadastroEquipamento import *
+from telas.GuiCadastroDepartamento import *
+from telas.GuiCadastroTecnico import *
 
 from telas.GuiSobre import *
 from telas.GuiLicenca import *
@@ -47,17 +48,24 @@ class Principal(QMainWindow, Ui_principal):
     def __init__(self, parent=None):
         super(Principal, self).__init__(parent)
         self.setupUi(self)
-        
+
+        # Variavel globais
+        self.id=int()        
+
         abrirBancoDeDados(self)
         self.bancoDeDados = QSqlDatabase.database("coopervap-bd")
+
+        # Abre o arquivo de login do sistema
+        self.file=open('data/login','a')
 
         # Cria a area onde as sub-janelas serão abertas
         self.MdiArea = QMdiArea(self)
         
 
 
-    def __done__(self):
-        fecharBancoDeDados(self.bancoDeDados)
+    def __del__(self):
+        QSqlDatabase.removeDatabase("coopervap-bd")
+        
 
     # Mostra janela para manutenção de usuarios, paramentro obj é a janela a ser aberta
     def mostrarSubwindow(self, obj):
@@ -67,6 +75,24 @@ class Principal(QMainWindow, Ui_principal):
         SubWindow.setAttribute(Qt.WA_DeleteOnClose)
         self.MdiArea.addSubWindow(SubWindow)
         SubWindow.show()
+        
+    # Grava os dados do usuario logado no arquivo de login
+    def log(self,u,s):
+        user  = u
+        senha = s
+        query = QSqlQuery(self.bancoDeDados)
+        query.prepare("SELECT id_usuario FROM usuario WHERE login=? and senha=? and status=?")
+        query.addBindValue(user)
+        query.addBindValue(senha)
+        query.addBindValue("Ativo")
+        query.exec_()
+        while(query.next()):            
+            self.id = query.value(0).toInt()            
+            
+        tempo=time.localtime()        
+        salve=str(self.id[0])+' '+str(tempo[2])+'/'+str(tempo[1])+'/'+str(tempo[0])+' '+str(tempo[3])+':'+str(tempo[4])+':'+str(tempo[5])+'\n'
+        self.file.write(salve)
+        self.file.close()
 
     # Verifica se o usuario existe no banco
     def is_exist(self):
@@ -78,13 +104,13 @@ class Principal(QMainWindow, Ui_principal):
         query.addBindValue(senha)
         query.addBindValue("Ativo")
         query.exec_()
-        while (query.next()):
+        while(query.next()):            
             var = query.value(0).toInt()
             if var[0] == 1:
+                self.log(user, senha)
                 return True
             else:
                 return False 
-
 
     @pyqtSignature("")
     def on_btEntrar_clicked(self):
@@ -108,6 +134,26 @@ class Principal(QMainWindow, Ui_principal):
         self.mostrarSubwindow(cadequp)
 
     @pyqtSignature("")
+    def on_actionCadastrar_Tecnicos_triggered(self):
+        cadtec = CadastroTecnico()
+        self.mostrarSubwindow(cadtec)
+
+    @pyqtSignature("")
+    def on_actionCadastrar_Departamentos_triggered(self):
+        caddepto = CadastroDepartamento()
+        self.mostrarSubwindow(caddepto)
+
+    @pyqtSignature("")
+    def on_actionCadastrar_SubDepartamentos_triggered(self):
+        cadsub = CadastroSubdepartamento()
+        self.mostrarSubwindow(cadsub)
+
+    @pyqtSignature("")
+    def on_actionRealizar_Pedido_de_Compra_triggered(self):
+        pedido = PedidoDeCompra()
+        self.mostrarSubwindow(pedido)
+
+    @pyqtSignature("")
     def on_actionDocumenta_o_triggered(self):          
         webbrowser.open('docs/Manual desenvolvedor/_build/html/index.html')
 
@@ -123,7 +169,6 @@ class Principal(QMainWindow, Ui_principal):
     @pyqtSignature("")
     def on_actionSair_triggered(self):          
         quit()
-
 
 
 
@@ -506,6 +551,170 @@ class CadastroEquipamento(QWidget, Ui_equipamento):
         else:
            self.btCancelar.setEnabled(self.editandoEquipamento)
 
+#-& CLASSE &-#
+class CadastroDepartamento(QWidget, Ui_departamento):
+    def __init__(self, parent=None):
+        super(CadastroDepartamento, self).__init__(parent)
+        self.setupUi(self)
+        self.setIncluindo(False)
+        self.setEditando(False)
+        self.incluindoDepartamento = False
+        self.editandoDepartamento = False
+        self.EditID.setVisible(False)
+        
+        self.bancoDeDados = QSqlDatabase.database("coopervap-bd")
+        self.departamentoModel = QSqlTableModel(self, self.bancoDeDados)
+        self.abrirTabelaDepartamento()
+
+        self.mapeador = QDataWidgetMapper()
+        self.mapeador.setModel(self.departamentoModel)
+        self.mapeador.addMapping(self.EditID, 0)
+        self.mapeador.addMapping(self.EditNome, 1)
+        self.mapeador.addMapping(self.EditCentroCusto, 2)
+        self.mapeador.setSubmitPolicy(QDataWidgetMapper.ManualSubmit)
+        
+        self.connect(self.tabela.selectionModel(), SIGNAL("currentRowChanged(QModelIndex,QModelIndex)"), self.mapeador, SLOT("setCurrentModelIndex(QModelIndex)"))
+
+    # Preence a tabela com os dados que estão no banco de dados
+    def abrirTabelaDepartamento(self):
+        consulta = "SELECT id_departamento,nome,centro_de_custo FROM departamento ORDER BY id_departamento"
+        self.departamentoModel.setQuery(QSqlQuery(consulta, self.bancoDeDados))
+
+        self.departamentoModel.setHeaderData(0, Qt.Horizontal, "Codigo")
+        self.departamentoModel.setHeaderData(1, Qt.Horizontal, "Nome")
+        self.departamentoModel.setHeaderData(2, Qt.Horizontal, "Centro de custo")
+        self.departamentoModel.setEditStrategy(QSqlTableModel.OnManualSubmit)
+
+        self.tabela.setModel(self.departamentoModel)
+
+    
+    # Ativa o botão de salvar e  cancelar, se o status for True
+    def setIncluindo(self,status):
+        self.incluindoDepartamento = status
+        self.btSalvar.setEnabled(self.incluindoDepartamento)
+
+
+
+    # Ativa o botão de salvar e cancelar, se o status for True
+    def setEditando(self,status):
+        self.editandoDepartamento = status
+        self.btSalvar.setEnabled(self.editandoDepartamento)
+
+
+    # Valida todos os campos da tela de departamento
+    def Valido(self):
+        if(self.EditID.text()!=""):
+            id=int(self.EditID.text())
+        else:
+            id=self.EditID.text()
+            
+        nome=self.EditNome.text()
+        centro=self.EditCentroCusto.text()
+        
+        if (nome=="" or centro==".."):
+            msg = QMessageBox.critical(self, "Erro",QString.fromUtf8("Todos os campos são obrigatorios!"), QMessageBox.Close)
+            return False, None
+        else:
+            depto=departamento(nome,centro,id)
+            return True, depto
+
+    def atualiza(self,obj):
+        try:
+            depto=obj
+
+            # Captura do arquivo de login o usuario logado
+            file=open("data/login","r")
+            texto=file.readlines()
+            last_login=texto[len(texto)-1]
+            id_usu=last_login[0]
+
+            query = QSqlQuery(self.bancoDeDados)
+            query.prepare("UPDATE departamento set nome=?, centro_de_custo=?, id_usuario=? WHERE id_departamento=?")
+            query.addBindValue(depto.nome)
+            query.addBindValue(depto.centro)            
+            query.addBindValue(id_usu)
+            query.addBindValue(depto.id)
+            query.exec_()
+
+            if (query.lastError().type() != QSqlError.NoError):
+                err = query.lastError()
+                QMessageBox.critical(None, "Erro na atualização do departamento", err.text())
+                return False
+            else:
+                QMessageBox.information(None, QString.fromUtf8("Atualização do Departamento"), "Departamento atualizado com sucesso!" )
+                return True
+        except AttributeError:
+            pass
+        
+    # Insere os dados no banco de dados
+    def insere(self,obj):
+        try:
+            depto=obj
+
+            # Captura do arquivo de login o usuario logado
+            file=open("data/login","r")
+            texto=file.readlines()
+            last_login=texto[len(texto)-1]
+            id_usu=last_login[0]
+            
+            query = QSqlQuery(self.bancoDeDados)
+            query.prepare("INSERT INTO departamento (nome,centro_de_custo,id_usuario)" "VALUES (?,?,?)")
+            query.addBindValue(depto.nome)
+            query.addBindValue(depto.centro)
+            query.addBindValue(id_usu)
+            query.exec_()
+
+            if (query.lastError().type() != QSqlError.NoError):
+                err = query.lastError()
+                QMessageBox.critical(None, "Erro no cadastro do departamento", err.text())
+                return False
+            else:
+                QMessageBox.information(None, "Cadastro de Departamento", "Departamento cadastrado com sucesso!" )
+                return True
+        except AttributeError:
+            pass
+
+    # Insere o altualiza os dados no banco de dados
+    @pyqtSignature("")
+    def on_btSalvar_clicked(self):
+        is_valid, depto=self.Valido()
+        
+        if (is_valid and depto.id!=""):
+            if(self.atualiza(depto)):
+                if (self.incluindoDepartamento):
+                    self.setIncluindo(False)
+                if (self.editandoDepartamento):
+                    self.setEditando(False)
+                self.abrirTabelaDepartamento()
+        elif(is_valid):
+            if(self.insere(depto)):
+                if (self.incluindoDepartamento):
+                    self.setIncluindo(False)
+                if (self.editandoDepartamento):
+                    self.setEditando(False)
+                self.abrirTabelaDepartamento()
+
+            
+    # Desabilita os botões de salvar e cancelar, limpa os campos e se existe uma linha vazia na coluna, limpa a mesma.
+    @pyqtSignature("")
+    def on_btCancelar_clicked(self):
+        self.setIncluindo(False)
+        self.setEditando(False)
+        self.EditID.clear()
+        self.EditNome.clear()
+        self.EditCentroCusto.clear()
+        self.abrirTabelaDepartamento()
+
+    # Abilita os botões de salvar e cancelar, quando um line edit começa a ser editado
+    @pyqtSignature("QString")
+    def on_EditNome_textEdited(self, text):
+        if (not(self.incluindoDepartamento or self.editandoDepartamento)):
+            self.setEditando(True)
+
+    @pyqtSignature("QString")
+    def on_EditCentroCusto_textEdited(self, text):
+        if (not(self.incluindoDepartamento or self.editandoDepartamento)):            
+            self.setEditando(True)
 
 
 
