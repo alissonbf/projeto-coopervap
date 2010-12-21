@@ -2,22 +2,22 @@
 # -*- coding: utf-8 -*-             
 
 ## [Ficha]##################################################
-#	                                                   #					           
-#  Nome: Modulo Model				           #
+#	                                                       #					           
+#  Nome: Modulo Model				                       #
 #  Escrito por: Alisson Barbosa Ferreira                   #
 #               Alisson Oliveira Ferreira                  #
 #               Victor Hugo Neiva                          #
 #               Wesley Junior                              #
 #                                                          #
-#  Criado em: 30/08/2010			           #
-#						           #
-#  Ultima atualizacao: 06/10/2010		           #
-#						           #
+#  Criado em: 30/08/2010			                       #
+#						                                   #
+#  Ultima atualizacao: 21/12/2010		                   #
+#						                                   #
 #  [Descricao]##############################################
-#					                   #
+#					                                       #
 #  Este modulo contem as classes dos objetos que são       #
 #  usados pelo programa.                                   #
-#					                   #
+#					                                       #
 ############################################################
 
 
@@ -42,5 +42,11 @@ class equipamento():
         self.id_equip = id_equip
         self.id_resp = id_resp
         self.usuario = usuario
+
+class departamento():
+    def __init__(self,nome,centro,id=None):
+        self.nome = nome
+        self.centro = centro
+        self.id = id
        
         
