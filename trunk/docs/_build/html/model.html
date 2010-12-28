@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -14,16 +12,16 @@
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
         VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
+        COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="coopervap v1.0 documentation" href="index.html" />
-    <link rel="prev" title="Modulo View" href="view.html" /> 
+    <link rel="next" title="Modulo View" href="view.html" />
+    <link rel="prev" title="Bem-vindo a documentação do Easy Estoque" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,6 +32,9 @@
              accesskey="I">index</a></li>
         <li class="right" >
           <a href="view.html" title="Modulo View"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Bem-vindo a documentação do Easy Estoque"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">coopervap v1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -59,7 +60,7 @@
 </ul>
 <p>Ultima atualização:</p>
 <ul class="simple">
-<li>06/10/2010</li>
+<li>22/12/2010</li>
 </ul>
 <p>Descrição</p>
 <ul class="simple">
@@ -71,17 +72,72 @@
 <h3>Metodos<a class="headerlink" href="#metodos" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="init">
 <h4>__init__<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h4>
-<p>Metodo que é executado quando o classe banco é instanciada, ele é o construtor da classe:</p>
+<p>Metodo que é executado quando o classe usuario é instanciada, ele é o construtor da classe:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span><span class="n">email</span><span class="p">,</span><span class="n">funcao</span><span class="p">,</span><span class="n">status</span><span class="p">,</span><span class="n">login</span><span class="p">,</span><span class="n">senha</span><span class="p">,</span> <span class="n">id_usu</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><em class="xref std std-ref">nome</em>: Parâmetro que recebe o nome do usuario</p>
-<p><em class="xref std std-ref">email</em>: Parâmetro que recebe o e-mail do usuario</p>
-<p><em class="xref std std-ref">funcao</em>: Parâmetro que recebe a função do usuario</p>
-<p><em class="xref std std-ref">status</em>: Parâmetro que recebe o status do usuario, o status pode ser ativo, ainda trabalha na empresa, ou inativo, não trabalha mais na empresa</p>
-<p><em class="xref std std-ref">login</em>: Parâmetro que recebe o login do usuario</p>
-<p><em class="xref std std-ref">senha</em>: Parâmetro que recebe a senha do usuario</p>
-<p><em class="xref std std-ref">id_usu</em>: Parâmetro que recebe o id do usuario, se o id não for passado ele recebe None</p>
+<p><em class="xref">nome</em>: Parâmetro que recebe o nome do usuario</p>
+<p><em class="xref">email</em>: Parâmetro que recebe o e-mail do usuario</p>
+<p><em class="xref">funcao</em>: Parâmetro que recebe a função do usuario</p>
+<p><em class="xref">status</em>: Parâmetro que recebe o status do usuario, o status pode ser ativo, ainda trabalha na empresa, ou inativo, não trabalha mais na empresa</p>
+<p><em class="xref">login</em>: Parâmetro que recebe o login do usuario</p>
+<p><em class="xref">senha</em>: Parâmetro que recebe a senha do usuario</p>
+<p><em class="xref">id_usu</em>: Parâmetro que recebe o id do usuario, se o id não for passado ele recebe None</p>
+</div>
+</div>
+</div>
+<div class="section" id="classe-departamento">
+<h2>Classe Departamento<a class="headerlink" href="#classe-departamento" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Metodos<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h4>__init__<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>Metodo que é executado quando o classe departamento é instanciada, ele é o construtor da classe:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nome</span><span class="p">,</span><span class="n">centro</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">nome</em>: Parâmetro que recebe o nome do departamento</p>
+<p><em class="xref">centro</em>: Parâmetro que recebe o valor do centro de custo do departamento</p>
+<p><em class="xref">id</em>: Parâmetro que recebe o id do departamento, se o id não for passado ele recebe None</p>
+</div>
+</div>
+</div>
+<div class="section" id="classe-tecnico">
+<h2>Classe Tecnico<a class="headerlink" href="#classe-tecnico" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Metodos<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h4>__init__<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>Metodo que é executado quando o classe tecnico é instanciada, ele é o construtor da classe:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nome</span><span class="p">,</span><span class="n">funcao</span><span class="p">,</span><span class="n">departamento</span><span class="p">,</span><span class="n">status</span><span class="p">,</span><span class="n">usuario</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">nome</em>: Parâmetro que recebe o nome do tecnico</p>
+<p><em class="xref">funcao</em>: Parâmetro que recebe a função do tecnico</p>
+<p><em class="xref">departamento</em>: Parâmentro que recebe o departamento onde o tecnico trabalha</p>
+<p><em class="xref">status</em>: Parâmetro que recebe o status do tecnico</p>
+<p><em class="xref">id</em>: Parâmetro que recebe o id do tecnico, se o id não for passado ele recebe None</p>
+</div>
+</div>
+</div>
+<div class="section" id="classe-equipamento">
+<h2>Classe Equipamento<a class="headerlink" href="#classe-equipamento" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Metodos<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h4>__init__<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>Metodo que é executado quando o classe equipamento é instanciada, ele é o construtor da classe:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">marca</span><span class="p">,</span> <span class="n">unidade</span><span class="p">,</span> <span class="n">quantidade</span><span class="p">,</span> <span class="n">estoque</span><span class="p">,</span> <span class="n">id_resp</span><span class="p">,</span> <span class="n">usuario</span><span class="p">,</span> <span class="n">id_equip</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">nome</em>: Parâmetro que recebe o nome do equipamento</p>
+<p><em class="xref">marca</em>: Parâmetro que recebe a marca do equipamento</p>
+<p><em class="xref">unidade</em>: Parâmetro que recebe a unidade do equipamento</p>
+<p><em class="xref">quantidade</em>: Parâmetro que recebe a quantidade de equipamentos que estão sendo cadastrados</p>
+<p><em class="xref">estoque</em>: Parâmetro que recebe a quantidade minima de equipamentos que pode-se ter</p>
+<p><em class="xref">id_resp</em>: Parâmetro que recebe o id do responsavel pelo equipamento</p>
+<p><cite>usuario</cite>: Parâmetro que recebe o id do usuario que cadastrou o equipamento</p>
+<p><em class="xref">id_equip</em>: Parâmetro que recebe o id do equipamento, se o id não for passado ele recebe None</p>
 </div>
 </div>
 </div>
@@ -93,12 +149,33 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Modulo Model</a><ul>
-<li><a class="reference internal" href="#classe-usuario">Classe Usuario</a><ul>
-<li><a class="reference internal" href="#metodos">Metodos</a><ul>
-<li><a class="reference internal" href="#init">__init__</a></li>
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Modulo Model</a><ul>
+<li><a class="reference external" href="#classe-usuario">Classe Usuario</a><ul>
+<li><a class="reference external" href="#metodos">Metodos</a><ul>
+<li><a class="reference external" href="#init">__init__</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="#classe-departamento">Classe Departamento</a><ul>
+<li><a class="reference external" href="#id1">Metodos</a><ul>
+<li><a class="reference external" href="#id2">__init__</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="#classe-tecnico">Classe Tecnico</a><ul>
+<li><a class="reference external" href="#id3">Metodos</a><ul>
+<li><a class="reference external" href="#id4">__init__</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="#classe-equipamento">Classe Equipamento</a><ul>
+<li><a class="reference external" href="#id5">Metodos</a><ul>
+<li><a class="reference external" href="#id6">__init__</a></li>
 </ul>
 </li>
 </ul>
@@ -107,27 +184,30 @@
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="view.html"
-                        title="previous chapter">Modulo View</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/model.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="index.html"
+                                  title="previous chapter">Bem-vindo a documentação do Easy Estoque</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="view.html"
+                                  title="next chapter">Modulo View</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/model.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -140,13 +220,16 @@
              >index</a></li>
         <li class="right" >
           <a href="view.html" title="Modulo View"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Bem-vindo a documentação do Easy Estoque"
              >previous</a> |</li>
         <li><a href="index.html">coopervap v1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2010, TI Livre.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0b2.
+      &copy; Copyright 2010, TI Livre.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.6.
     </div>
   </body>
 </html>

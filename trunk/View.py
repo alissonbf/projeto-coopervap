@@ -12,7 +12,7 @@
 #                                                          #
 #  Criado em: 30/08/2010			           #
 #						           #
-#  Ultima atualizacao: 24/11/2010		           #
+#  Ultima atualizacao: 22/12/2010		           #
 #						           #
 #  [Descricao]##############################################
 #					                   #
@@ -483,73 +483,8 @@ class CadastroUsuario(QWidget, Ui_Dialog):
         self.close()
             
         
-
-#-& CLASSE &-#
-class CadastroEquipamento(QWidget, Ui_equipamento):
-    def __init__(self, parent=None):
-        super(CadastroEquipamento, self).__init__(parent)
-        self.setupUi(self)
-
-        self.setIncluindo(False)
-        self.setEditando(False)
-        self.incluindoEquipamento = False        
-        self.editandoEquipamento = False
-
-        self.bancoDeDados = QSqlDatabase.database("coopervap-bd")
-        self.equipamentoModel = QSqlTableModel(self, self.bancoDeDados)
-        #self.abrirTabelaEquipamento()
-
-        self.mapeador = QDataWidgetMapper()
-        self.mapeador.setModel(self.equipamentoModel)
-        self.mapeador.addMapping(self.EditID, 0)
-        self.mapeador.addMapping(self.EditNome, 1)
-        self.mapeador.addMapping(self.EditMarca, 2)
-        self.mapeador.addMapping(self.EditUnidade, 3)
-        self.mapeador.addMapping(self.spinQtd, 4)
-        self.mapeador.addMapping(self.spinEstMin, 5)
-        self.mapeador.addMapping(self.EditPatrimonio, 6)
-        self.mapeador.addMapping(self.comboReponsavel, 7)
-        self.mapeador.setSubmitPolicy(QDataWidgetMapper.ManualSubmit)   
-        
-    def __done__(self):
-        QSqlDatabase.removeDatabase("coopervap-bd")
-
-    # Preence a tabela com os dados que estão no banco de dados
-    def abrirTabelaEquipamento(self):        
-        consulta = "SELECT id_usuario,nome,email,funcao,status,login FROM usuario ORDER BY id_usuario"     
-        self.equipamentoModel.setQuery(QSqlQuery(consulta, self.bancoDeDados))
-
-        self.equipamentoModel.setHeaderData(0, Qt.Horizontal, "ID")
-        self.equipamentoModel.setHeaderData(1, Qt.Horizontal, "Nome")
-        self.equipamentoModel.setHeaderData(2, Qt.Horizontal, "Marca")
-        self.equipamentoModel.setHeaderData(3, Qt.Horizontal, "Unidade")
-        self.equipamentoModel.setHeaderData(4, Qt.Horizontal, "Qtd")
-        self.equipamentoModel.setHeaderData(5, Qt.Horizontal, "Estoque Min")
-        self.equipamentoModel.setHeaderData(6, Qt.Horizontal, QString.fromUtf8("Patrimônio"))
-        self.equipamentoModel.setHeaderData(7, Qt.Horizontal, QString.fromUtf8("Responsável"))
-        self.equipamentoModel.setEditStrategy(QSqlTableModel.OnManualSubmit)
-        
-        self.tabela.setModel(self.equipamentoModel)  
-
-
-    # Ativa o botão de salvar e  cancelar, se o status for True
-    def setIncluindo(self,status):
-        self.incluindoEquipamento = status
-        self.btSalvar.setEnabled(self.incluindoEquipamento)
-        if (self.incluindoEquipamento):
-            self.btCancelar.setEnabled(self.incluindoEquipamento)
-        else:
-            self.btCancelar.setEnabled(self.incluindoEquipamento)
-    
-
-    # Ativa o botão de salvar e cancelar, se o status for True
-    def setEditando(self,status):
-        self.editandoEquipamento = status
-        self.btSalvar.setEnabled(self.editandoEquipamento)
-        if (self.editandoEquipamento):
-            self.btCancelar.setEnabled(self.editandoEquipamento)
-        else:
-           self.btCancelar.setEnabled(self.editandoEquipamento)
+   
+     
 
 #-& CLASSE &-#
 class CadastroDepartamento(QWidget, Ui_departamento):
@@ -610,7 +545,7 @@ class CadastroDepartamento(QWidget, Ui_departamento):
             
         nome=self.EditNome.text()
         centro=self.EditCentroCusto.text()
-        
+
         if (nome=="" or centro==".."):
             msg = QMessageBox.critical(self, "Erro",QString.fromUtf8("Todos os campos são obrigatorios!"), QMessageBox.Close)
             return False, None
@@ -618,6 +553,7 @@ class CadastroDepartamento(QWidget, Ui_departamento):
             depto=departamento(nome,centro,id)
             return True, depto
 
+    # Atualiza os dados no banco de dados
     def atualiza(self,obj):
         try:
             depto=obj
@@ -674,7 +610,7 @@ class CadastroDepartamento(QWidget, Ui_departamento):
         except AttributeError:
             pass
 
-    # Insere o altualiza os dados no banco de dados
+    # Insere ou atualiza os dados no banco de dados
     @pyqtSignature("")
     def on_btSalvar_clicked(self):
         is_valid, depto=self.Valido()
@@ -711,22 +647,452 @@ class CadastroDepartamento(QWidget, Ui_departamento):
         if (not(self.incluindoDepartamento or self.editandoDepartamento)):
             self.setEditando(True)
 
+    # Abilita os botões de salvar e cancelar, quando um line edit começa a ser editado
     @pyqtSignature("QString")
     def on_EditCentroCusto_textEdited(self, text):
         if (not(self.incluindoDepartamento or self.editandoDepartamento)):            
             self.setEditando(True)
 
+#-& CLASSE &-#
+class CadastroTecnico(QWidget, Ui_tecnico):
+    def __init__(self, parent=None):
+        super(CadastroTecnico, self).__init__(parent)
+        self.setupUi(self)
+        
+        self.setIncluindo(False)
+        self.setEditando(False)
+        self.incluindoTecnico = False
+        self.editandoTecnico = False
+        
+        self.EditID.setVisible(False)
+        self.EditUsuario.setVisible(False)        
+
+        self.bancoDeDados = QSqlDatabase.database("coopervap-bd")
+        self.tecnicoModel = QSqlRelationalTableModel(self, self.bancoDeDados)
+        self.abrirTabelaTecnico()
+        self.abrirComboDepto()
+
+        self.mapeador = QDataWidgetMapper()
+        self.mapeador.setModel(self.tecnicoModel)
+
+        self.relacionalDelegate = QSqlRelationalDelegate(self.mapeador)
+
+        self.mapeador.setItemDelegate(self.relacionalDelegate)
+        self.comboDepto.model().sort(1, Qt.AscendingOrder)
+
+        self.mapeador.addMapping(self.EditID, 0)
+        self.mapeador.addMapping(self.EditNome, 1)
+        self.mapeador.addMapping(self.EditFuncao, 2)
+        self.mapeador.addMapping(self.comboStatus, 3)
+        self.mapeador.addMapping(self.comboDepto, 4)        
+        self.mapeador.setSubmitPolicy(QDataWidgetMapper.ManualSubmit)
+
+        self.connect(self.tabela.selectionModel(), SIGNAL("currentRowChanged(QModelIndex,QModelIndex)"), self.mapeador, SLOT("setCurrentModelIndex(QModelIndex)"))    
+
+    # Preence a tabela com os dados que estão no banco de dados
+    def abrirTabelaTecnico(self):
+        consulta = "SELECT t.id_tecnico,t.nome,t.funcao,t.status,d.nome FROM tecnico t, departamento d WHERE d.id_departamento=t.id_departamento ORDER BY id_tecnico"
+        self.tecnicoModel.setQuery(QSqlQuery(consulta, self.bancoDeDados))
+        
+        self.tecnicoModel.setEditStrategy(QSqlTableModel.OnManualSubmit)
+
+        self.tecnicoModel.setHeaderData(0, Qt.Horizontal, "Codigo")
+        self.tecnicoModel.setHeaderData(1, Qt.Horizontal, "Nome")
+        self.tecnicoModel.setHeaderData(2, Qt.Horizontal, QString.fromUtf8("Função"))
+        self.tecnicoModel.setHeaderData(3, Qt.Horizontal, "Status")
+        self.tecnicoModel.setHeaderData(4, Qt.Horizontal, "Departamento")
+        
+        self.tecnicoModel.select()
+        
+        self.tabela.setModel(self.tecnicoModel)
+        self.tabela.show()
+        self.tabela.resizeColumnsToContents()
+        self.tabela.sortByColumn(0, Qt.AscendingOrder)
+
+    # Preenche o Combo de Departamentos
+    def abrirComboDepto(self):
+        self.tecnicoModel.setRelation(4, QSqlRelation("DEPARTAMENTO", "ID_DEPARTAMENTO", "NOME"))
+        relacaoModel = self.tecnicoModel.relationModel(4)
+        self.comboDepto.setModel(relacaoModel)
+        self.comboDepto.setModelColumn(relacaoModel.fieldIndex("NOME"))        
+
+    # Captura do arquivo de login o usuario logado
+    def addUsuarioLogado(self):        
+        file=open("data/login","r")
+        texto=file.readlines()
+        last_login=texto[len(texto)-1]
+        id_usu=last_login[0]
+        
+        return id_usu        
+
+    # Ativa o botão de salvar e  cancelar, se o status for True
+    def setIncluindo(self,status):
+        self.incluindoTecnico = status
+        self.btSalvar.setEnabled(self.incluindoTecnico)
+
+    # Ativa o botão de salvar e cancelar, se o status for True
+    def setEditando(self,status):
+        self.editandoTecnico = status
+        self.btSalvar.setEnabled(self.editandoTecnico)
+
+    # Valida todos os campos da tela de tecnicos
+    def Valido(self):
+        if(self.EditID.text()!=""):
+            id=int(self.EditID.text())
+        else:
+            id=self.EditID.text()
+
+        nome=self.EditNome.text()
+        funcao=self.EditFuncao.text()
+        departamento=self.comboDepto.currentText()
+        status = self.comboStatus.currentText()
+        id_usuario = int(self.addUsuarioLogado())
+        
+        query = QSqlQuery(self.bancoDeDados)
+        query.prepare("SELECT id_departamento FROM departamento d WHERE d.nome=?")
+        query.addBindValue(departamento)
+        query.exec_()
+
+        while(query.next()):
+            id_depto = query.value(0).toInt()
+        
+        if (nome=="" or funcao==""):
+            msg = QMessageBox.critical(self, "Erro",QString.fromUtf8("Todos os campos são obrigatorios!"), QMessageBox.Close)
+            return False, None
+        else:
+            tec = tecnico(nome,funcao,id_depto[0],status,id_usuario,id)
+            return True, tec
+
+    def atualiza(self,obj):
+        try:
+            tec=obj
+
+            query = QSqlQuery(self.bancoDeDados)
+            query.prepare("UPDATE tecnico SET nome=?, funcao=?, status=?, id_usuario=?, id_departamento=? WHERE id_tecnico=?")
+            query.addBindValue(tec.nome)
+            query.addBindValue(tec.funcao)
+            query.addBindValue(tec.status)
+            query.addBindValue(tec.usuario)
+            query.addBindValue(tec.departamento)
+            query.addBindValue(tec.id)
+            query.exec_()
+            
+            if (query.lastError().type() != QSqlError.NoError):
+                err = query.lastError()
+                QMessageBox.critical(None, QString.fromUtf8("Erro na atualização do tecnico"), err.text())
+                return False
+            else:
+                QMessageBox.information(None, QString.fromUtf8("Atualização do Tecnico"), "Tecnico atualizado com sucesso!" )
+                return True
+        except AttributeError:
+            pass
+
+    # Insere os dados no banco de dados
+    def insere(self,obj):
+        try:
+            tec=obj            
+
+            query = QSqlQuery(self.bancoDeDados)
+            query.prepare("INSERT INTO tecnico (nome,funcao,status,id_usuario,id_departamento)" "VALUES (?,?,?,?,?)")
+            query.addBindValue(tec.nome)
+            query.addBindValue(tec.funcao)
+            query.addBindValue(tec.status)
+            query.addBindValue(tec.usuario)
+            query.addBindValue(tec.departamento)
+            query.exec_()
+
+            if (query.lastError().type() != QSqlError.NoError):
+                err = query.lastError()
+                QMessageBox.critical(None, "Erro no cadastro do tecnico", err.text())
+                return False
+            else:
+                QMessageBox.information(None, "Cadastro de Tecnico", "Tecnico cadastrado com sucesso!" )
+                return True
+        except AttributeError:
+            pass
+
+    # Insere o altualiza os dados no banco de dados
+    @pyqtSignature("")
+    def on_btSalvar_clicked(self):
+        is_valid, tecnico=self.Valido()
+
+        if (is_valid and tecnico.id!=""):
+            if(self.atualiza(tecnico)):
+                if (self.incluindoTecnico):
+                    self.setIncluindo(False)
+                if (self.editandoTecnico):
+                    self.setEditando(False)
+                self.abrirTabelaTecnico()
+        elif(is_valid):
+            if(self.insere(tecnico)):
+                if (self.incluindoTecnico):
+                    self.setIncluindo(False)
+                if (self.editandoTecnico):
+                    self.setEditando(False)
+                self.abrirTabelaTecnico()
 
 
+    # Desabilita os botões de salvar e cancelar, limpa os campos e se existe uma linha vazia na coluna, limpa a mesma.
+    @pyqtSignature("")
+    def on_btCancelar_clicked(self):        
+        self.setIncluindo(False)
+        self.setEditando(False)
+        self.EditID.clear()
+        self.EditNome.clear()
+        self.EditFuncao.clear()
+        self.abrirTabelaTecnico()
+
+    # Abilita os botões de salvar e cancelar, quando um line edit começa a ser editado
+    @pyqtSignature("QString")
+    def on_EditNome_textEdited(self, text):
+        if (not(self.incluindoTecnico or self.editandoTecnico)):
+            self.setEditando(True)
+
+    @pyqtSignature("QString")
+    def on_EditFuncao_textEdited(self, text):
+        if (not(self.incluindoTecnico or self.editandoTecnico)):
+            self.setEditando(True)
 
 
+    
 
 
+#-& CLASSE &-#
+class CadastroEquipamento(QWidget, Ui_equipamento):
+    def __init__(self, parent=None):
+        super(CadastroEquipamento, self).__init__(parent)
+        self.setupUi(self)
+
+        self.EditID.setVisible(False)        
+        self.id_usuario = self.addUsuarioLogado()
+
+        self.bancoDeDados = QSqlDatabase.database("coopervap-bd")
+        self.departamentoModel = QSqlTableModel(self, self.bancoDeDados)
+
+        self.equipamentoModel = QSqlRelationalTableModel(self, self.bancoDeDados)
+        self.abrirComboResponsavel()
+
+        self.abrirTabelaEquipamento()
+
+        self.mapeador = QDataWidgetMapper()
+        self.mapeador.setModel(self.equipamentoModel)
+
+        self.relacionalDelegate = QSqlRelationalDelegate(self.mapeador)
+
+        self.mapeador.setItemDelegate(self.relacionalDelegate)
+        self.mapeador.addMapping(self.EditID, 0)
+        self.mapeador.addMapping(self.EditNome, 1)
+        self.mapeador.addMapping(self.EditMarca, 2)
+        self.mapeador.addMapping(self.EditUnidade, 3)
+        self.mapeador.addMapping(self.spinQtd, 4)
+        self.mapeador.addMapping(self.spinEstMin, 5)
+        self.mapeador.addMapping(self.comboReponsavel, 6)
+        self.mapeador.setSubmitPolicy(QDataWidgetMapper.ManualSubmit)
+        
+        self.connect(self.tabela.selectionModel(), SIGNAL("currentRowChanged(QModelIndex,QModelIndex)"), self.mapeador, SLOT("setCurrentModelIndex(QModelIndex)"))
+
+    #Mostra os dados que estão na tabela
+    def abrirTabelaEquipamento(self):
+        consulta = "select e.id_equipamento, e.nome, e.marca_modelo, e.unidade, e.quantidade_inicial, e.estoque_min, t.nome from equipamento e , tecnico t where e.id_tecnico = t.id_tecnico order by e.id_equipamento"
+        self.equipamentoModel.setQuery(QSqlQuery(consulta, self.bancoDeDados))
+        
+        self.equipamentoModel.setEditStrategy(QSqlTableModel.OnManualSubmit)
+
+        self.equipamentoModel.setHeaderData(0, Qt.Horizontal, "Codigo")
+        self.equipamentoModel.setHeaderData(1, Qt.Horizontal, "Nome")
+        self.equipamentoModel.setHeaderData(2, Qt.Horizontal, QString.fromUtf8("Marca"))
+        self.equipamentoModel.setHeaderData(3, Qt.Horizontal, "Unidade")
+        self.equipamentoModel.setHeaderData(4, Qt.Horizontal, "Qtd")        
+        self.equipamentoModel.setHeaderData(5, Qt.Horizontal, "Estoque Min")
+        self.equipamentoModel.setHeaderData(6, Qt.Horizontal, "Responsavel")
+
+        self.equipamentoModel.select()
+        
+        self.tabela.setModel(self.equipamentoModel)
+        self.tabela.show()
+        self.tabela.resizeColumnsToContents()
+        self.tabela.sortByColumn(0, Qt.AscendingOrder)
+            
+
+    # Preenche o Combo de Departamentos
+    def abrirComboResponsavel(self):
+        self.equipamentoModel.setRelation(1, QSqlRelation("TECNICO", "ID_TECNICO", "NOME"))
+        relacaoModel = self.equipamentoModel.relationModel(1)
+        self.comboReponsavel.setModel(relacaoModel)
+        self.comboReponsavel.setModelColumn(relacaoModel.fieldIndex("NOME"))
 
 
+    # Captura do arquivo de login o usuario logado
+    def addUsuarioLogado(self):        
+        file=open("data/login","r")
+        texto=file.readlines()
+        last_login=texto[len(texto)-1]
+        id_usu=last_login[0]
+        
+        return id_usu
+
+    # Insere o altualiza os dados no banco de dados
+    @pyqtSignature("")
+    def on_btSalvar_clicked(self): 
+        verifica, equip = self.validaEquipamento()
+        if (verifica and equip.id_equip == ""):
+            self.inserirEquipamento(equip)
+            self.abrirTabelaEquipamento()
+            self.EditNome.clear()
+            self.EditMarca.clear()
+            self.EditUnidade.clear()
+            self.spinQtd.clear()
+            self.PesquisaNome.clear()  
+            self.PesquisaMarca.clear()
+        else:
+            self.atualizaEquipamento(equip)
+            self.abrirTabelaEquipamento()
+            self.EditNome.clear()
+            self.EditMarca.clear()
+            self.EditUnidade.clear()
+            self.spinQtd.clear()
+            self.PesquisaNome.clear() 
+            self.PesquisaMarca.clear()
+        
+    #Insere os dados no banco de dados
+    def inserirEquipamento(self, equip):
+        equip = equip
+        query = QSqlQuery(self.bancoDeDados)
+        query.prepare("insert into equipamento (nome, marca_modelo, unidade, quantidade_inicial, estoque_min, id_usuario, id_tecnico)" "values ( ?,?,?,?,?,?,?)")
+        query.addBindValue(equip.nome)
+        query.addBindValue(equip.marca)
+        query.addBindValue(equip.unidade)
+        query.addBindValue(equip.quantidade)
+        query.addBindValue(equip.estoque)
+        query.addBindValue(equip.usuario)
+        query.addBindValue(equip.id_resp)
+        query.exec_()      
+        
+        if (query.lastError().type() != QSqlError.NoError):
+            err = query.lastError()
+            QMessageBox.critical(None, QString.fromUtf8("Erro na inserção do equipamento"), err.text())
+        else:
+            QMessageBox.information(None, QString.fromUtf8("Inserção do Equipamento"), "Equipamento inserido com sucesso!" )
 
 
+    @pyqtSignature("")
+    def on_btCancelar_clicked(self):
+        self.EditID.clear()
+        self.EditNome.clear()
+        self.EditMarca.clear()
+        self.EditUnidade.clear()
+        self.spinQtd.clear()
+        self.spinEstMin.clear()
+        self.PesquisaNome.clear()
+        self.PesquisaMarca.clear()
+        self.abrirTabelaEquipamento()
 
+    #Atualiza os dados do equipamento
+    def atualizaEquipamento(self, equip):
+        equip = equip
+        query = QSqlQuery(self.bancoDeDados)
+        query.prepare("update equipamento set nome =?, marca_modelo = ?, unidade = ?, quantidade_inicial = ?, estoque_min = ?, id_usuario = ?, id_tecnico = ? where id_equipamento = ?")
+        query.addBindValue(equip.nome)
+        query.addBindValue(equip.marca)
+        query.addBindValue(equip.unidade)
+        query.addBindValue(equip.quantidade)
+        query.addBindValue(equip.estoque)
+        query.addBindValue(equip.usuario)
+        query.addBindValue(equip.id_resp)
+        query.addBindValue(equip.id_equip)
+        query.exec_()
+
+        if (query.lastError().type() != QSqlError.NoError):
+            err = query.lastError()
+            QMessageBox.critical(None, QString.fromUtf8("Erro ao alterar equipamento"), err.text())
+        else:
+            QMessageBox.information(None, QString.fromUtf8("Atualização do Equipamento"), "Equipamento alterado com sucesso!" )
+            
+
+    #Captura o ID do responsavel
+    def capturaResponsavel(self):
+
+        responsavel = self.comboReponsavel.currentText()
+        query = QSqlQuery(self.bancoDeDados)
+        query.prepare("SELECT id_tecnico FROM tecnico t WHERE t.nome=?")
+        query.addBindValue(responsavel)
+        query.exec_()
+
+        while(query.next()):
+            id_resp = query.value(0).toInt()
+
+        return id_resp[0]
+
+    # Valida todos os campos da tela de equipamento 
+    def validaEquipamento(self):
+        id_equip = self.EditID.text()
+        if (id_equip == ""):
+            pass
+        else:
+            id_equip = int(id_equip)
+        
+        nome = self.EditNome.text()
+        marca_modelo = self.EditMarca.text()
+        unidade = self.EditUnidade.text()
+        quantidade_inicial = self.spinQtd.value()
+        estoque_min = self.spinEstMin.value()    
+
+        id_resp = self.capturaResponsavel()
+
+        if (nome == "" or marca_modelo == "" or quantidade_inicial == "" or estoque_min == ""):
+            QMessageBox.critical(None, QString.fromUtf8("Erro"), QString.fromUtf8("Alguns desses campos estão vazios:\n nome\n marca\n quantidade\n estoque minimo" ))
+            return False, None
+        else:
+            equip = equipamento(nome, marca_modelo, unidade, quantidade_inicial, estoque_min, id_resp,self.id_usuario, id_equip)
+            return True, equip
+
+    # Faz uma busca no banco de dados, o tipo de busca varia de acordo com o parametro sql
+    def buscaIncremental(self, sql):
+        consulta = sql
+
+        self.equipamentoModel.setQuery(QSqlQuery(consulta, self.bancoDeDados))
+        
+        self.equipamentoModel.setEditStrategy(QSqlTableModel.OnManualSubmit)
+
+        self.equipamentoModel.setHeaderData(0, Qt.Horizontal, "Codigo")
+        self.equipamentoModel.setHeaderData(1, Qt.Horizontal, "Nome")
+        self.equipamentoModel.setHeaderData(2, Qt.Horizontal, QString.fromUtf8("Marca"))
+        self.equipamentoModel.setHeaderData(3, Qt.Horizontal, "Unidade")
+        self.equipamentoModel.setHeaderData(4, Qt.Horizontal, "Qtd")        
+        self.equipamentoModel.setHeaderData(5, Qt.Horizontal, "Estoque Min")
+        self.equipamentoModel.setHeaderData(6, Qt.Horizontal, "Responsavel")
+
+        self.equipamentoModel.select()
+        
+        self.tabela.setModel(self.equipamentoModel)
+        self.tabela.show()
+        self.tabela.resizeColumnsToContents()
+        self.tabela.sortByColumn(0, Qt.AscendingOrder)
+
+    # Capitura o que o usuario digitou e monta um comando sql, para busca pelo nome do equipamento
+    @pyqtSignature("QString")
+    def on_PesquisaNome_textChanged(self, text):
+        texto = '%'+text+'%'
+        consulta = "select e.id_equipamento, e.nome, e.marca_modelo, e.unidade, e.quantidade_inicial, e.estoque_min, t.nome from equipamento e , tecnico t where e.id_tecnico = t.id_tecnico and e.nome like '%s' order by e.id_equipamento" % texto
+
+        self.buscaIncremental(consulta)
+
+    # Capitura o que o usuario digitou e monta um comando sql, para busca pela marca do equipamento
+    @pyqtSignature("QString")
+    def on_PesquisaMarca_textChanged(self, text):
+        texto = '%'+text+'%'
+        consulta = "select e.id_equipamento, e.nome, e.marca_modelo, e.unidade, e.quantidade_inicial, e.estoque_min, t.nome from equipamento e , tecnico t where e.id_tecnico = t.id_tecnico and e.marca_modelo like '%s' order by e.id_equipamento" % texto
+
+        self.buscaIncremental(consulta)
+
+
+        
+
+
+    
+        
+
+    
 
 
         

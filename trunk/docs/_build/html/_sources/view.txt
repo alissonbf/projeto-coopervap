@@ -10,7 +10,7 @@ Escrito por:
 * Alisson Barbosa Ferreira, alissonbf@gmail.com                   
 * Alisson Oliveira Ferreira, linukiss@gmail.com                  
 * Victor Hugo Neiva, victorhugoneiva@gmail.com                          
-* Wesley Junior                              
+* Wesley Junior, www.wesley@gmail.com                              
                                                           
 Criado em: 
 
@@ -18,17 +18,11 @@ Criado em:
 						                                   
 Ultima atualização: 
 
-- 06/10/2010		                   
+- 22/12/2010		                   
 						                                   
 Descrição
 
 - Este modulo contém as classes que se comunicam com as interfaces graficas e da vida aos seus botões        
-
-.. _cadatrousuario:
-
-----------------------
-Classe CadastroUsuario
-----------------------
 
 
 Importações
@@ -87,14 +81,23 @@ Este modulo contem as classes dos objetos que são usados pelo programa::
     from Model import *
 
 
-.. _metodos:
+.. _cadatrousuario:
 
 
-Metodos
+Classes
 =======
 
+CadastroUsuario
+---------------
+
+.. _metodos:
+
+-------
+Metodos
+-------
+
 __init__
---------
+********
 
 Metodo que é executado quando o classe banco é instanciada, ele é o construtor da classe::
 
@@ -102,7 +105,7 @@ Metodo que é executado quando o classe banco é instanciada, ele é o construto
 
 
 abrirTabelaUsuario
-------------------
+******************
 
 Metodo que traz todos os usuarios cadastrados no sistema::
 
@@ -110,7 +113,7 @@ Metodo que traz todos os usuarios cadastrados no sistema::
 
 
 setIncluindo
-------------
+************
 
 Ativa o botão de salvar e cancelar, se o status for True::
 
@@ -120,7 +123,7 @@ Ativa o botão de salvar e cancelar, se o status for True::
 
 
 setEditando
------------
+***********
 
 Aiva o botão de salvar e cancelar, se o status for True::
 
@@ -129,7 +132,7 @@ Aiva o botão de salvar e cancelar, se o status for True::
 :ref:`status`: Parâmetro que recebe um tipo de dado boolean
 
 valido
-------
+******
 
 Valida os dados, digitados pelo usuario::
 
@@ -140,7 +143,7 @@ Valida os dados, digitados pelo usuario::
 :ref:`return`: Este metodo retorna uma variavel valor, que pode ser True se todos os campos digitados forem validos, senão forem ela fica com o valor False. O metodo também retorna o objeto usu, que é uma instancia da classe usuario, criada se todos os campos forem validos. 
 
 inclusao
---------
+********
 
 Insere os dados do usuario no banco::
 
@@ -155,7 +158,7 @@ Insere os dados do usuario no banco::
 :ref:`return`: Este metodo retorna True, se o usuario for inserido com sucesso, senão retorna False
 
 atualizacao
------------
+***********
 
 Atualiza os dados do usuario que estão no banco::
 
@@ -170,7 +173,7 @@ Atualiza os dados do usuario que estão no banco::
 :ref:`return`: Este metodo retorna True, se o usuario for atualizado com sucesso, senão retorna False
 
 destrava
---------
+********
 
 Ativa todos os campos de inserção de dados::
 
@@ -178,7 +181,7 @@ Ativa todos os campos de inserção de dados::
 
 
 on_Novo_clicked
----------------
+***************
 
 Cria uma nova linha na tabela e limpa o formulario de departamentos::
 
@@ -188,7 +191,7 @@ Cria uma nova linha na tabela e limpa o formulario de departamentos::
 :ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
 
 on_Salvar_clicked
------------------
+*****************
 
 Salva os dados no banco de dados depois de validados::
 
@@ -199,7 +202,7 @@ Salva os dados no banco de dados depois de validados::
 
 
 on_Deletar_clicked
-------------------
+******************
 
 Desabilita os botões de salvar e cancelar, limpa os campos e se existe uma linha vazia na coluna, limpa a mesma::
 
@@ -210,7 +213,7 @@ Desabilita os botões de salvar e cancelar, limpa os campos e se existe uma linh
 
 
 on_EditNome_textEdited
-----------------------
+**********************
 
 Desativa os campos de texto de senha e confirmar senha::
 
@@ -224,7 +227,7 @@ Desativa os campos de texto de senha e confirmar senha::
 
 
 on_EditEmail_textEdited
------------------------
+***********************
 
 Desativa os campos de texto de senha e confirmar senha::
 
@@ -238,7 +241,7 @@ Desativa os campos de texto de senha e confirmar senha::
 
 
 on_EditFuncao_textEdited
-------------------------
+************************
 
 Desativa os campos de texto de senha e confirmar senha::
 
@@ -251,7 +254,7 @@ Desativa os campos de texto de senha e confirmar senha::
 
 
 on_EditLogin_textEdited
------------------------
+***********************
 
 Desativa os campos de texto de senha e confirmar senha::
 
@@ -264,7 +267,7 @@ Desativa os campos de texto de senha e confirmar senha::
 
 
 on_ComboStatus_activated
-------------------------
+************************
 
 Desativa os campos de texto de senha e confirmar senha::
 
@@ -277,7 +280,7 @@ Desativa os campos de texto de senha e confirmar senha::
 
 
 on_Fechar_clicked
-------------------------
+*****************
 
 Fecha a janela::
 
@@ -287,3 +290,373 @@ Fecha a janela::
 :ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
 
 
+CadastroDepartamento
+--------------------
+
+-------
+Metodos
+-------
+
+__init__
+********
+
+Metodo que é executado quando o classe banco é instanciada, ele é o construtor da classe::
+
+  __init__(self, parent=None)
+
+
+abrirTabelaDepartamento
+***********************
+Preence a tabela com os dados que estão no banco de dados::
+
+    abrirTabelaDepartamento(self)
+
+setIncluindo
+************
+
+Ativa o botão de salvar e  cancelar, se o status for True::
+
+    setIncluindo(self,status)
+
+:ref:`status`: variavel do tipo booleano, True se o usuario estiver incluindo ou False se não estiver incluindo.
+
+setEditando
+***********
+
+Ativa o botão de salvar e cancelar, se o status for True::
+
+    setEditando(self,status)
+
+:ref:`status`: variavel do tipo booleano, True se o usuario estiver editando ou False se não estiver editando.
+
+
+Valido
+******
+
+Valida todos os campos da tela de departamento::
+
+    Valido(self)
+
+:ref:`return`: Este metodo retorna uma variavel valor, que pode ser True se todos os campos digitados forem validos, senão forem ela fica com o valor False. O metodo também retorna o objeto departamento, que é uma instancia da classe departamento, criada se todos os campos forem validos. 
+
+atualiza
+********
+
+Atualiza os dados no banco de dados::
+
+    atualiza(self,obj)
+
+:ref:`obj`: Objeto da instanciado da classe departamento.
+
+insere
+********
+
+Insere os dados no banco de dados::
+
+    insere(self,obj)
+
+:ref:`obj`: Objeto da instanciado da classe departamento.
+
+
+on_btSalvar_clicked
+*******************
+
+Insere ou atualiza os dados no banco de dados::
+
+    @pyqtSignature("")        
+    on_btSalvar_clicked(self)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+
+on_btCancelar_clicked
+*********************
+
+Desabilita os botões de salvar e cancelar, limpa os campos e se existe uma linha vazia na coluna, limpa a mesma.::
+
+    @pyqtSignature("")        
+    on_btCancelar_clicked(self)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+on_EditNome_textEdited
+**********************
+
+Abilita os botões de salvar e cancelar, quando um line edit começa a ser editado::
+
+    @pyqtSignature("QString")        
+    on_EditNome_textEdited(self, text)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+on_EditCentroCusto_textEdited
+*****************************
+
+Abilita os botões de salvar e cancelar, quando um line edit começa a ser editado::
+
+    @pyqtSignature("QString")        
+    on_EditCentroCusto_textEdited(self, text)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget
+ enviará>.
+
+CadastroTecnico
+---------------
+
+-------
+Metodos
+-------
+
+__init__
+********
+
+Metodo que é executado quando o classe banco é instanciada, ele é o construtor da classe::
+
+  __init__(self, parent=None)
+
+
+abrirTabelaTecnico
+******************
+Preence a tabela com os dados que estão no banco de dados::
+
+    abrirTabelaTecnico(self)
+
+
+abrirComboDepto
+***************
+
+Preenche o Combo de Departamentos::
+
+    abrirComboDepto(self)
+
+
+addUsuarioLogado
+****************
+
+Captura do arquivo de login o usuario logado::
+
+    addUsuarioLogado(self)
+
+:ref:`return`: Retorna o id co usuario que esta logado
+
+
+setIncluindo
+************
+
+Ativa o botão de salvar e  cancelar, se o status for True::
+
+    setIncluindo(self,status)
+
+:ref:`status`: variavel do tipo booleano, True se o usuario estiver incluindo ou False se não estiver incluindo.
+
+
+setEditando
+***********
+
+Ativa o botão de salvar e cancelar, se o status for True::
+
+    setEditando(self,status)
+
+:ref:`status`: variavel do tipo booleano, True se o usuario estiver editando ou False se não estiver editando.
+
+
+
+Valido
+******
+
+Valida todos os campos da tela de tecnico::
+
+    Valido(self)
+
+:ref:`return`: Este metodo retorna uma variavel valor, que pode ser True se todos os campos digitados forem validos, senão forem ela fica com o valor False. O metodo também retorna o objeto tecnico, que é uma instancia da classe tecnico, criada se todos os campos forem validos. 
+
+atualiza
+********
+
+Atualiza os dados no banco de dados::
+
+    atualiza(self,obj)
+
+:ref:`obj`: Objeto da instanciado da classe tecnico.
+
+insere
+********
+
+Insere os dados no banco de dados::
+
+    insere(self,obj)
+
+:ref:`obj`: Objeto da instanciado da classe tecnico.
+
+
+on_btSalvar_clicked
+*******************
+
+Insere ou atualiza os dados no banco de dados::
+
+    @pyqtSignature("")        
+    on_btSalvar_clicked(self)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+
+on_btCancelar_clicked
+*********************
+
+Desabilita os botões de salvar e cancelar, limpa os campos e se existe uma linha vazia na coluna, limpa a mesma.::
+
+    @pyqtSignature("")        
+    on_btCancelar_clicked(self)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+on_EditNome_textEdited
+**********************
+
+Abilita os botões de salvar e cancelar, quando um line edit começa a ser editado::
+
+    @pyqtSignature("QString")        
+    on_EditNome_textEdited(self, text)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+on_EditFuncao_textEdited
+************************
+
+Abilita os botões de salvar e cancelar, quando um line edit começa a ser editado::
+
+    @pyqtSignature("QString")        
+    on_EditFuncao_textEdited(self, text)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+
+
+CadastroEquipamento
+-------------------
+
+-------
+Metodos
+-------
+
+__init__
+********
+
+Metodo que é executado quando o classe banco é instanciada, ele é o construtor da classe::
+
+  __init__(self, parent=None)
+
+
+abrirTabelaTecnico
+******************
+
+Preence a tabela com os dados que estão no banco de dados::
+
+    abrirTabelaEquipamento(self)
+
+
+abrirComboResponsavel
+*********************
+
+Preenche o Combo de Departamentos::
+
+    abrirComboResponsavel(self)
+
+addUsuarioLogado
+****************
+
+Captura do arquivo de login o usuario logado::
+
+    addUsuarioLogado(self)
+
+:ref:`return`: Retorna o id co usuario que esta logado
+
+
+validaEquipamento
+*****************
+
+Valida todos os campos da tela de equipamento::
+
+    validaEquipamento(self)
+
+:ref:`return`: Retorna o id co usuario que esta logado
+
+atualizaEquipamento
+*******************
+
+Atualiza os dados no banco de dados::
+
+    atualizaEquipamento(self, equip)
+
+:ref:`return`: Este metodo retorna uma variavel valor, que pode ser True se todos os campos digitados forem validos, senão forem ela fica com o valor False. O metodo também retorna o objeto equip, que é uma instancia da classe equipamento, criada se todos os campos forem validos. 
+
+inserirEquipamento
+******************
+
+Insere os dados no banco de dados::
+
+    inserirEquipamento(self, equip)
+
+:ref:`obj`: Objeto da instanciado da classe tecnico.
+
+
+capturaResponsavel
+******************
+
+Captura o ID do responsavel::
+
+    capturaResponsavel(self)
+
+:ref:`return`: Este metodo retorna o id do responsavel pelo equipamento.
+
+
+buscaIncremental
+****************
+
+Faz uma busca no banco de dados, o tipo de busca varia de acordo com o parametro sql::
+
+    buscaIncremental(self, sql)
+
+:ref:`sql`: Instrução sql que define que tipo de busca o metodo vai executar.
+
+
+on_btSalvar_clicked
+*******************
+
+Insere ou atualiza os dados no banco de dados::
+
+    @pyqtSignature("")        
+    on_btSalvar_clicked(self)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+
+on_btCancelar_clicked
+*********************
+
+Desabilita os botões de salvar e cancelar, limpa os campos e se existe uma linha vazia na coluna, limpa a mesma.::
+
+    @pyqtSignature("")        
+    on_btCancelar_clicked(self)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+on_PesquisaNome_textChanged
+***************************
+
+Capitura o que o usuario digitou e monta um comando sql, para busca pelo nome do equipamento::
+
+    @pyqtSignature("QString")        
+    on_PesquisaNome_textChanged(self, text)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+on_PesquisaMarca_textChanged
+****************************
+
+Capitura o que o usuario digitou e monta um comando sql, para busca pela marca do equipamento::
+
+    @pyqtSignature("QString")        
+    on_PesquisaMarca_textChanged(self, text)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.

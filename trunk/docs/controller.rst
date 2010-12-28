@@ -18,7 +18,7 @@ Criado em:
 						                                   
 Ultima atualização: 
 
-- 06/10/2010		                   
+- 21/12/2010		                   
 						                                   
 Descrição
 
@@ -70,9 +70,6 @@ Abre uma conexão com o banco de dados, que será usado pela sua aplicação::
     
     abrirBancoDeDados(self)
 
-    return con
-
-:ref:`Return`: Este metodo retorna a variavel de conexão com o bando de dados
 
 fecharBancoDeDados
 ------------------
