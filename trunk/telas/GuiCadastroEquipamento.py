@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'cadastroequipamento.ui'
 #
-# Created: Mon Dec 27 22:47:37 2010
-#      by: PyQt4 UI code generator 4.7.4
+# Created: Tue Dec 28 20:02:07 2010
+#      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -145,10 +145,15 @@ class Ui_equipamento(object):
         QtCore.QMetaObject.connectSlotsByName(equipamento)
         equipamento.setTabOrder(self.EditNome, self.EditMarca)
         equipamento.setTabOrder(self.EditMarca, self.EditUnidade)
-        equipamento.setTabOrder(self.EditUnidade, self.btSalvar)
-        equipamento.setTabOrder(self.btSalvar, self.EditID)
-        equipamento.setTabOrder(self.EditID, self.btCancelar)
-        equipamento.setTabOrder(self.btCancelar, self.tabela)
+        equipamento.setTabOrder(self.EditUnidade, self.spinQtd)
+        equipamento.setTabOrder(self.spinQtd, self.spinEstMin)
+        equipamento.setTabOrder(self.spinEstMin, self.comboReponsavel)
+        equipamento.setTabOrder(self.comboReponsavel, self.btSalvar)
+        equipamento.setTabOrder(self.btSalvar, self.PesquisaNome)
+        equipamento.setTabOrder(self.PesquisaNome, self.PesquisaMarca)
+        equipamento.setTabOrder(self.PesquisaMarca, self.tabela)
+        equipamento.setTabOrder(self.tabela, self.btCancelar)
+        equipamento.setTabOrder(self.btCancelar, self.EditID)
 
     def retranslateUi(self, equipamento):
         equipamento.setWindowTitle(QtGui.QApplication.translate("equipamento", "Cadastro de Equipamento", None, QtGui.QApplication.UnicodeUTF8))
