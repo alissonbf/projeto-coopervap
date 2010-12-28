@@ -11,7 +11,7 @@
 #                                                          #
 #  Criado em: 30/08/2010			                       #
 #						                                   #
-#  Ultima atualizacao: 21/12/2010		                   #
+#  Ultima atualizacao: 22/12/2010		                   #
 #						                                   #
 #  [Descricao]##############################################
 #					                                       #
@@ -32,12 +32,11 @@ class usuario():
         self.id = id_usu
 
 class equipamento():
-    def __init__(self, nome, marca, unidade, quantidade, estoque, id_resp, usuario, id_equip=None, patrimonio=None):
+    def __init__(self, nome, marca, unidade, quantidade, estoque, id_resp, usuario, id_equip=None):
         self.nome = nome
         self.marca = marca
         self.unidade = unidade
         self.quantidade = quantidade
-        self.patrimonio = patrimonio
         self.estoque = estoque
         self.id_equip = id_equip
         self.id_resp = id_resp
@@ -48,5 +47,14 @@ class departamento():
         self.nome = nome
         self.centro = centro
         self.id = id
+
+class tecnico():
+    def __init__(self,nome,funcao,departamento,status,usuario,id=None):
+        self.nome=nome
+        self.funcao=funcao
+        self.departamento=departamento
+        self.status=status
+        self.usuario=usuario
+        self.id=id
        
         

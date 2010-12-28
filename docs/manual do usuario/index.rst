@@ -12,6 +12,9 @@ Contents:
    :maxdepth: 2
 
    cadastrousuario.rst
+   cadastrodepartamento.rst
+   cadastrotecnico.rst
+   cadastrodeequipamento.rst
 
 Indices and tables
 ==================
