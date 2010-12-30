@@ -41,6 +41,7 @@ CREATE TABLE tecnico (
 
 ALTER SEQUENCE tecnico_id_tecnico_seq OWNED BY tecnico.ID_tecnico;
 
+
 CREATE SEQUENCE equipamento_id_equipamento_seq;
 
 CREATE TABLE equipamento (
@@ -89,11 +90,6 @@ ALTER SEQUENCE baixa_por_equipamento_id_be_seq OWNED BY baixa_por_equipamento.id
 
 CREATE TABLE pedido_compra (
                 codigo INTEGER NOT NULL,
-                nome VARCHAR(90) NOT NULL,
-                quantidade INTEGER NOT NULL,
-                entrega VARCHAR(10),
-                unidade VARCHAR(70),
-                descricao VARCHAR(400) NOT NULL,
                 data VARCHAR(10) NOT NULL,
                 ID_usuario INTEGER NOT NULL,
                 ID_tecnico INTEGER NOT NULL,
@@ -102,9 +98,20 @@ CREATE TABLE pedido_compra (
 );
 
 
-CREATE INDEX previsao_de_entrega
- ON pedido_compra
- ( unidade );
+CREATE SEQUENCE pedido_equipamento_id_seq;
+
+CREATE TABLE pedido_equipamento (
+                id INTEGER NOT NULL DEFAULT nextval('pedido_equipamento_id_seq'),
+                codigo INTEGER NOT NULL,
+                nome VARCHAR(90) NOT NULL,
+                descricao VARCHAR(400) NOT NULL,
+                unidade VARCHAR(70),
+                entrega VARCHAR(10),
+                CONSTRAINT pedido_equipamento_pk PRIMARY KEY (id, codigo)
+);
+
+
+ALTER SEQUENCE pedido_equipamento_id_seq OWNED BY pedido_equipamento.id;
 
 ALTER TABLE tecnico ADD CONSTRAINT usuario_tecnico_fk
 FOREIGN KEY (ID_usuario)
@@ -186,6 +193,13 @@ NOT DEFERRABLE;
 ALTER TABLE baixa_por_equipamento ADD CONSTRAINT baixa_baixa_por_equipamento_fk
 FOREIGN KEY (ID_baixa)
 REFERENCES baixa (ID_baixa)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE pedido_equipamento ADD CONSTRAINT pedido_compra_pedido_equipamento_fk
+FOREIGN KEY (codigo)
+REFERENCES pedido_compra (codigo)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
