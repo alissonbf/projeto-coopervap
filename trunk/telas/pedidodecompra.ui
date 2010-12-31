@@ -201,7 +201,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
-               <widget class="QTableView" name="tabela">
+               <widget class="QTableView" name="TabelaPedido">
                 <property name="editTriggers">
                  <set>QAbstractItemView::NoEditTriggers</set>
                 </property>
@@ -305,7 +305,7 @@
                    </widget>
                   </item>
                   <item row="0" column="1">
-                   <widget class="QComboBox" name="comboBox_3"/>
+                   <widget class="QComboBox" name="comboPedido"/>
                   </item>
                   <item row="1" column="0">
                    <widget class="QLabel" name="label_6">
@@ -315,7 +315,7 @@
                    </widget>
                   </item>
                   <item row="1" column="1">
-                   <widget class="QLineEdit" name="lineEdit"/>
+                   <widget class="QLineEdit" name="EditNome"/>
                   </item>
                  </layout>
                 </item>
@@ -329,7 +329,7 @@
                    </widget>
                   </item>
                   <item row="0" column="1">
-                   <widget class="QLineEdit" name="lineEdit_2"/>
+                   <widget class="QLineEdit" name="EditUnidade"/>
                   </item>
                   <item row="1" column="0">
                    <widget class="QLabel" name="label_9">
@@ -339,7 +339,7 @@
                    </widget>
                   </item>
                   <item row="1" column="1">
-                   <widget class="QLineEdit" name="lineEdit_3"/>
+                   <widget class="QLineEdit" name="EditEntrega"/>
                   </item>
                  </layout>
                 </item>
@@ -353,7 +353,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QTextEdit" name="textEdit">
+               <widget class="QTextEdit" name="EditDescricao">
                 <property name="overwriteMode">
                  <bool>false</bool>
                 </property>
@@ -391,7 +391,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_7">
               <item>
-               <widget class="QTableView" name="tabela_2">
+               <widget class="QTableView" name="TabelaEquipamento">
                 <property name="editTriggers">
                  <set>QAbstractItemView::NoEditTriggers</set>
                 </property>
@@ -454,7 +454,7 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="lineEdit_4"/>
+             <widget class="QLineEdit" name="BuscaNome"/>
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="label_12">
@@ -464,7 +464,7 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="EditData_2"/>
+             <widget class="QLineEdit" name="BuscaData"/>
             </item>
            </layout>
           </item>
@@ -478,7 +478,7 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QComboBox" name="comboResponsavel_2"/>
+             <widget class="QComboBox" name="BuscaResponsavel"/>
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="label_14">
@@ -488,7 +488,7 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QComboBox" name="comboStatus_2">
+             <widget class="QComboBox" name="BuscaStatus">
               <item>
                <property name="text">
                 <string>Em andamento</string>
@@ -535,7 +535,7 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>
-           <widget class="QTableView" name="tabela_3">
+           <widget class="QTableView" name="TabelaBusca">
             <property name="editTriggers">
              <set>QAbstractItemView::NoEditTriggers</set>
             </property>
