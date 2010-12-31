@@ -33,6 +33,7 @@ from telas.GuiCadastroUsuario import *
 from telas.GuiCadastroEquipamento import *
 from telas.GuiCadastroDepartamento import *
 from telas.GuiCadastroTecnico import *
+from telas.GuiPedidoDeCompra import *
 
 from telas.GuiSobre import *
 from telas.GuiLicenca import *
@@ -1084,6 +1085,14 @@ class CadastroEquipamento(QWidget, Ui_equipamento):
         consulta = "select e.id_equipamento, e.nome, e.marca_modelo, e.unidade, e.quantidade_inicial, e.estoque_min, t.nome from equipamento e , tecnico t where e.id_tecnico = t.id_tecnico and e.marca_modelo like '%s' order by e.id_equipamento" % texto
 
         self.buscaIncremental(consulta)
+
+
+
+#-& CLASSE &-#
+class PedidoDeCompra(QWidget, Ui_pedidodecompra):
+    def __init__(self, parent=None):
+        super(PedidoDeCompra, self).__init__(parent)
+        self.setupUi(self)
 
 
         
