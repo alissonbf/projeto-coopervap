@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'cadastrotecnico.ui'
 #
-# Created: Wed Dec 22 19:51:22 2010
+# Created: Fri Jan  7 15:51:29 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -19,8 +19,8 @@ class Ui_tecnico(object):
         self.verticalLayout = QtGui.QVBoxLayout(tecnico)
         self.verticalLayout.setObjectName("verticalLayout")
         self.frame_4 = QtGui.QFrame(tecnico)
-        self.frame_4.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_4.setFrameShape(QtGui.QFrame.Box)
+        self.frame_4.setFrameShadow(QtGui.QFrame.Sunken)
         self.frame_4.setObjectName("frame_4")
         self.horizontalLayout_4 = QtGui.QHBoxLayout(self.frame_4)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
@@ -42,8 +42,8 @@ class Ui_tecnico(object):
         self.horizontalLayout_4.addWidget(self.btCancelar)
         self.verticalLayout.addWidget(self.frame_4)
         self.frame = QtGui.QFrame(tecnico)
-        self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame.setFrameShape(QtGui.QFrame.Box)
+        self.frame.setFrameShadow(QtGui.QFrame.Sunken)
         self.frame.setObjectName("frame")
         self.horizontalLayout = QtGui.QHBoxLayout(self.frame)
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -95,8 +95,8 @@ class Ui_tecnico(object):
         self.horizontalLayout.addLayout(self.formLayout_3)
         self.verticalLayout.addWidget(self.frame)
         self.frame_2 = QtGui.QFrame(tecnico)
-        self.frame_2.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_2.setFrameShape(QtGui.QFrame.Box)
+        self.frame_2.setFrameShadow(QtGui.QFrame.Sunken)
         self.frame_2.setObjectName("frame_2")
         self.horizontalLayout_2 = QtGui.QHBoxLayout(self.frame_2)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
@@ -105,8 +105,8 @@ class Ui_tecnico(object):
         self.horizontalLayout_2.addWidget(self.label_5)
         self.verticalLayout.addWidget(self.frame_2)
         self.frame_3 = QtGui.QFrame(tecnico)
-        self.frame_3.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_3.setFrameShape(QtGui.QFrame.Box)
+        self.frame_3.setFrameShadow(QtGui.QFrame.Sunken)
         self.frame_3.setObjectName("frame_3")
         self.horizontalLayout_3 = QtGui.QHBoxLayout(self.frame_3)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")

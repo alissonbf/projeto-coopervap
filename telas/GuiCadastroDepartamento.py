@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'cadastrodepartamento.ui'
 #
-# Created: Sat Dec  4 15:04:31 2010
+# Created: Fri Jan  7 15:50:36 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -20,8 +20,8 @@ class Ui_departamento(object):
         self.verticalLayout_2 = QtGui.QVBoxLayout(departamento)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.frame_4 = QtGui.QFrame(departamento)
-        self.frame_4.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_4.setFrameShape(QtGui.QFrame.Box)
+        self.frame_4.setFrameShadow(QtGui.QFrame.Sunken)
         self.frame_4.setObjectName("frame_4")
         self.horizontalLayout_4 = QtGui.QHBoxLayout(self.frame_4)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
@@ -43,8 +43,8 @@ class Ui_departamento(object):
         self.horizontalLayout_4.addWidget(self.btCancelar)
         self.verticalLayout_2.addWidget(self.frame_4)
         self.frame = QtGui.QFrame(departamento)
-        self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame.setFrameShape(QtGui.QFrame.Box)
+        self.frame.setFrameShadow(QtGui.QFrame.Sunken)
         self.frame.setObjectName("frame")
         self.verticalLayout = QtGui.QVBoxLayout(self.frame)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -72,8 +72,8 @@ class Ui_departamento(object):
         self.verticalLayout.addLayout(self.formLayout_2)
         self.verticalLayout_2.addWidget(self.frame)
         self.frame_2 = QtGui.QFrame(departamento)
-        self.frame_2.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_2.setFrameShape(QtGui.QFrame.Box)
+        self.frame_2.setFrameShadow(QtGui.QFrame.Sunken)
         self.frame_2.setObjectName("frame_2")
         self.horizontalLayout_2 = QtGui.QHBoxLayout(self.frame_2)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
@@ -82,8 +82,8 @@ class Ui_departamento(object):
         self.horizontalLayout_2.addWidget(self.label_5)
         self.verticalLayout_2.addWidget(self.frame_2)
         self.frame_3 = QtGui.QFrame(departamento)
-        self.frame_3.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_3.setFrameShape(QtGui.QFrame.Box)
+        self.frame_3.setFrameShadow(QtGui.QFrame.Sunken)
         self.frame_3.setObjectName("frame_3")
         self.horizontalLayout_3 = QtGui.QHBoxLayout(self.frame_3)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
@@ -109,7 +109,7 @@ class Ui_departamento(object):
         self.btCancelar.setText(QtGui.QApplication.translate("departamento", "Cancelar", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("departamento", "Nome", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("departamento", "Centro de custo", None, QtGui.QApplication.UnicodeUTF8))
-        self.EditCentroCusto.setInputMask(QtGui.QApplication.translate("departamento", "#.###.### ; ", None, QtGui.QApplication.UnicodeUTF8))
+        self.EditCentroCusto.setInputMask(QtGui.QApplication.translate("departamento", "#.##.## ; ", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("departamento", "Departamentos Cadastrados", None, QtGui.QApplication.UnicodeUTF8))
 
 import img_rc

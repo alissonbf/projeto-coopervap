@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'sobre.ui'
 #
-# Created: Sun Oct 10 23:42:10 2010
-#      by: PyQt4 UI code generator 4.7.2
+# Created: Fri Jan  7 15:49:33 2011
+#      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
 

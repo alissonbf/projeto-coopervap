@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'cadastrousuario.ui'
 #
-# Created: Sat Oct  9 22:03:25 2010
-#      by: PyQt4 UI code generator 4.7.2
+# Created: Fri Jan  7 15:51:43 2011
+#      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -19,8 +19,8 @@ class Ui_Dialog(object):
         self.verticalLayout = QtGui.QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.frame_3 = QtGui.QFrame(Dialog)
-        self.frame_3.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_3.setFrameShape(QtGui.QFrame.Box)
+        self.frame_3.setFrameShadow(QtGui.QFrame.Sunken)
         self.frame_3.setObjectName("frame_3")
         self.horizontalLayout_2 = QtGui.QHBoxLayout(self.frame_3)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
@@ -48,8 +48,8 @@ class Ui_Dialog(object):
         self.horizontalLayout_2.addWidget(self.Deletar)
         self.verticalLayout.addWidget(self.frame_3)
         self.frame_2 = QtGui.QFrame(Dialog)
-        self.frame_2.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_2.setFrameShape(QtGui.QFrame.Box)
+        self.frame_2.setFrameShadow(QtGui.QFrame.Sunken)
         self.frame_2.setObjectName("frame_2")
         self.horizontalLayout = QtGui.QHBoxLayout(self.frame_2)
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -124,8 +124,8 @@ class Ui_Dialog(object):
         self.label_7.setObjectName("label_7")
         self.verticalLayout.addWidget(self.label_7)
         self.frame_4 = QtGui.QFrame(Dialog)
-        self.frame_4.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_4.setFrameShape(QtGui.QFrame.Box)
+        self.frame_4.setFrameShadow(QtGui.QFrame.Sunken)
         self.frame_4.setObjectName("frame_4")
         self.horizontalLayout_3 = QtGui.QHBoxLayout(self.frame_4)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")

@@ -585,6 +585,317 @@ on_PesquisaMarca_textChanged(self, text)</pre>
 </div>
 </div>
 </div>
+<div class="section" id="pedidodecompra">
+<h3>PedidoDeCompra<a class="headerlink" href="#pedidodecompra" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id28">
+<h4>Metodos<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id29">
+<h5>__init__<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h5>
+<p>Metodo que é executado quando o classe é instanciada, ele é o construtor da classe:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id30">
+<h5>addUsuarioLogado<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h5>
+<p>Captura do arquivo de login o usuario logado:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">addUsuarioLogado</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">return id_usu</em>: Retorna o id do usuario logado</p>
+</div>
+<div class="section" id="id31">
+<h5>abrirComboResponsavel<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h5>
+<p>Preenche o Combo de Responsaveis:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">abrirComboResponsavel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id32">
+<h5>capturaResponsavel<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h5>
+<p>Captura o ID do responsavel:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">capturaResponsavel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">return id_resp[0]</em>: Retorna o id do responsavel</p>
+</div>
+<div class="section" id="validapedido">
+<h5>validaPedido<a class="headerlink" href="#validapedido" title="Permalink to this headline">¶</a></h5>
+<p>Valida os dados da primeira etapa do pedido de compra:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">validaPedido</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id33">
+<h5>validaEquipamento<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h5>
+<p>Valida os dados da primeira etapa do pedido de compra:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">validaEquipamento</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="abrirtabelapedidocompra">
+<h5>abrirTabelaPedidoCompra<a class="headerlink" href="#abrirtabelapedidocompra" title="Permalink to this headline">¶</a></h5>
+<p>Mostra o pedido que acabou de ser inserido:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">abrirTabelaPedidoCompra</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">obj</em>: Objeto da classe pedidocompra</p>
+</div>
+<div class="section" id="abrirtabelaequipamentopedido">
+<h5>abrirTabelaEquipamentoPedido<a class="headerlink" href="#abrirtabelaequipamentopedido" title="Permalink to this headline">¶</a></h5>
+<p>Mostra o equipamento que acabou de ser inserido no pedido:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">abrirTabelaEquipamentoPedido</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">obj</em>: Objeto da classe equipamentopedido</p>
+</div>
+<div class="section" id="montartabelapedidocompra">
+<h5>montarTabelaPedidoCompra<a class="headerlink" href="#montartabelapedidocompra" title="Permalink to this headline">¶</a></h5>
+<p>Monta as colunas da tabela da primeira fase do pedido de compra:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">montarTabelaPedidoCompra</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="montartabelaequipamentopedido">
+<h5>montarTabelaEquipamentoPedido<a class="headerlink" href="#montartabelaequipamentopedido" title="Permalink to this headline">¶</a></h5>
+<p>Monta as colunas da tabela da primeira fase do pedido de compra:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">montarTabelaEquipamentoPedido</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inserirpedido">
+<h5>inserirPedido<a class="headerlink" href="#inserirpedido" title="Permalink to this headline">¶</a></h5>
+<p>Insere a primeira fase do pedido no banco de dados:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">inserirPedido</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">obj</em>: Objeto da classe pedidocompra</p>
+</div>
+<div class="section" id="inserirequipamentopedido">
+<h5>inserirEquipamentoPedido<a class="headerlink" href="#inserirequipamentopedido" title="Permalink to this headline">¶</a></h5>
+<p>Insere um pedido no banco de dados:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">inserirEquipamentoPedido</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">obj</em>: Objeto da classe equipamentopedido</p>
+</div>
+<div class="section" id="atualizarpedido">
+<h5>atualizarPedido<a class="headerlink" href="#atualizarpedido" title="Permalink to this headline">¶</a></h5>
+<p>Atualiza os dados da primeira fase do realizar pedido de compra:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">atualizarPedido</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">obj</em>: Objeto da classe pedidocompra</p>
+</div>
+<div class="section" id="atualizarequipamentopedido">
+<h5>atualizarEquipamentoPedido<a class="headerlink" href="#atualizarequipamentopedido" title="Permalink to this headline">¶</a></h5>
+<p>Atualiza os dados da segunda fase do realizar pedido de compra:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">atualizarEquipamentoPedido</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">obj</em>: Objeto da classe equipamentopedido</p>
+</div>
+<div class="section" id="busca-responsavel">
+<h5>Busca_Responsavel<a class="headerlink" href="#busca-responsavel" title="Permalink to this headline">¶</a></h5>
+<p>captura o que o usuario escolheu no combobox e retorna a ID do responsavel para a ser utilizado na busca:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Busca_Responsavel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">return id_resp[0]</em>: Retorna o id do responsavel</p>
+</div>
+<div class="section" id="montar-tabela-de-busca-pedido">
+<h5>montar_tabela_de_busca_pedido<a class="headerlink" href="#montar-tabela-de-busca-pedido" title="Permalink to this headline">¶</a></h5>
+<p>monta as colunas da tabela que será visualizada na tela:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">montar_tabela_de_busca_pedido</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">sql</em>: Instrução sql que define que tipo de busca o metodo vai executar.</p>
+</div>
+<div class="section" id="on-btinserirpedido-clicked">
+<h5>on_btInserirPedido_clicked<a class="headerlink" href="#on-btinserirpedido-clicked" title="Permalink to this headline">¶</a></h5>
+<p>Insere  os dados da primeira fase do pedido no banco de dados:</p>
+<div class="highlight-python"><pre>@pyqtSignature("")
+on_btInserirPedido_clicked(self)</pre>
+</div>
+<p><em class="xref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;.</p>
+</div>
+<div class="section" id="on-btinserirequipamento-clicked">
+<h5>on_btInserirEquipamento_clicked<a class="headerlink" href="#on-btinserirequipamento-clicked" title="Permalink to this headline">¶</a></h5>
+<p>Insere  os dados da segunda fase do pedido no banco de dados:</p>
+<div class="highlight-python"><pre>@pyqtSignature("")
+on_btInserirEquipamento_clicked(self)</pre>
+</div>
+<p><em class="xref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;</p>
+</div>
+<div class="section" id="on-btatualizarpedido-clicked">
+<h5>on_btAtualizarPedido_clicked<a class="headerlink" href="#on-btatualizarpedido-clicked" title="Permalink to this headline">¶</a></h5>
+<p>Atualiza os dados da primeira fase do pedido:</p>
+<div class="highlight-python"><pre>@pyqtSignature("")
+on_btAtualizarPedido_clicked(self)</pre>
+</div>
+<p><em class="xref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;</p>
+</div>
+<div class="section" id="on-btatualizarequipamento-clicked">
+<h5>on_btAtualizarEquipamento_clicked<a class="headerlink" href="#on-btatualizarequipamento-clicked" title="Permalink to this headline">¶</a></h5>
+<p>Altualiza os dados da segunda fase do pedido:</p>
+<div class="highlight-python"><pre>@pyqtSignature("")
+on_btAtualizarEquipamento_clicked(self)</pre>
+</div>
+<p><em class="xref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;</p>
+</div>
+<div class="section" id="on-buscanome-textchanged">
+<h5>on_BuscaNome_textChanged<a class="headerlink" href="#on-buscanome-textchanged" title="Permalink to this headline">¶</a></h5>
+<p>Captura o nome do equipamento que o usuario digitou e monta um comando sql, para busca pela marca do equipamento:</p>
+<div class="highlight-python"><pre>@pyqtSignature("QString")
+on_BuscaNome_textChanged(self, text)</pre>
+</div>
+<p><em class="xref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;</p>
+</div>
+<div class="section" id="on-buscacodigo-textchanged">
+<h5>on_BuscaCodigo_textChanged<a class="headerlink" href="#on-buscacodigo-textchanged" title="Permalink to this headline">¶</a></h5>
+<p>Captura o codigo do pedido que o usuario digitou e monta um comando sql, para busca pela marca do equipamento:</p>
+<div class="highlight-python"><pre>@pyqtSignature("QString")
+on_BuscaCodigo_textChanged(self, text)</pre>
+</div>
+<p><em class="xref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;</p>
+</div>
+<div class="section" id="on-buscastatus-activated">
+<h5>on_BuscaStatus_activated<a class="headerlink" href="#on-buscastatus-activated" title="Permalink to this headline">¶</a></h5>
+<p>Captura o status do pedido que o usuario digitou e monta um comando sql, para busca pela marca do equipamento:</p>
+<div class="highlight-python"><pre>@pyqtSignature("QString")
+on_BuscaStatus_activated(self, text)</pre>
+</div>
+<p><em class="xref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;</p>
+</div>
+<div class="section" id="on-buscaresponsavel-activated">
+<h5>on_BuscaResponsavel_activated<a class="headerlink" href="#on-buscaresponsavel-activated" title="Permalink to this headline">¶</a></h5>
+<p>captura o responsavel que o usuario escolhei e monta um select para buscar o pedido realizado:</p>
+<div class="highlight-python"><pre>@pyqtSignature("QString")
+on_BuscaResponsavel_activated(self, text)</pre>
+</div>
+<p><em class="xref">&#64;pyqtSignature(&#8220;&#8221;)</em>: Assinatura padão do python, que faz com que este metodo seja conectado ao widget &#8220;Novo&#8221; automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_&lt;nome do widget&gt;_&lt;sinal que o widget enviará&gt;</p>
+</div>
+<div class="section" id="on-btmostrarequip-clicked">
+<h5>on_btMostrarEquip_clicked<a class="headerlink" href="#on-btmostrarequip-clicked" title="Permalink to this headline">¶</a></h5>
+<p>Pega o numero do Pedido de compra e mostra os equipamentos do pedido:</p>
+<div class="highlight-python"><pre>@pyqtSignature("")
+on_btMostrarEquip_clicked(self)</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="baixamaterial">
+<h3>BaixaMaterial<a class="headerlink" href="#baixamaterial" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id34">
+<h4>Metodos<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id35">
+<h5>__init__<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h5>
+<p>Metodo que é executado quando o classe é instanciada, ele é o construtor da classe:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id36">
+<h5>addUsuarioLogado<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h5>
+<p>Captura do arquivo de login o usuario logado:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">addUsuarioLogado</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">return id_usu</em>: Retorna o id do usuario logado</p>
+</div>
+<div class="section" id="abrircombotecnico">
+<h5>abrirComboTecnico<a class="headerlink" href="#abrircombotecnico" title="Permalink to this headline">¶</a></h5>
+<p>Preenche o Combo de Tecnicos:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">abrirComboTecnico</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id37">
+<h5>abrirComboDepto<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h5>
+<p>Preenche o Combo de Departamentos:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">abrirComboDepto</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="montartabelas">
+<h5>montarTabelas<a class="headerlink" href="#montartabelas" title="Permalink to this headline">¶</a></h5>
+<p>Monta as colunas das tabelas das abas de busca de equipamento e baixa:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">montarTabelas</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id38">
+<h5>buscaIncremental<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h5>
+<p>Faz uma busca no banco de dados, o tipo de busca varia de acordo com o parametro sql:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">buscaIncremental</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">sql</em>: Instrução sql que define que tipo de busca o metodo vai executar.</p>
+</div>
+<div class="section" id="capturatecnico">
+<h5>capturaTecnico<a class="headerlink" href="#capturatecnico" title="Permalink to this headline">¶</a></h5>
+<p>Captura o ID do responsavel:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">capturaTecnico</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tec</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">tec</em>: Nome do tecnico, que terá seu id identificado</p>
+<p><em class="xref">return id_tec[0]</em>: Retorna o id do tecnico</p>
+</div>
+<div class="section" id="capturadepto">
+<h5>capturaDepto<a class="headerlink" href="#capturadepto" title="Permalink to this headline">¶</a></h5>
+<p>Captura o ID do departamento:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">capturaDepto</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">return id_depto[0]</em>: Retorna o id do departamento</p>
+</div>
+<div class="section" id="validabaixa">
+<h5>validaBaixa<a class="headerlink" href="#validabaixa" title="Permalink to this headline">¶</a></h5>
+<p>Valida os dados da tela de baixa no estoque:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">validaBaixa</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id39">
+<h5>insere<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h5>
+<p>Insere os dados no banco:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">insere</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">obj</em>: Objeto da classe baixamaterial</p>
+</div>
+<div class="section" id="id40">
+<h5>atualiza<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h5>
+<p>Atualiza os dados no banco de dados:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">atualiza</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">obj</em>: Objeto da classe baixamaterial</p>
+</div>
+<div class="section" id="deleta">
+<h5>deleta<a class="headerlink" href="#deleta" title="Permalink to this headline">¶</a></h5>
+<p>Deleta os dados no banco de dados:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">deleta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">obj</em>: Objeto da classe baixamaterial</p>
+</div>
+<div class="section" id="on-btinserirbaixa-clicked">
+<h5>on_btInserirBaixa_clicked<a class="headerlink" href="#on-btinserirbaixa-clicked" title="Permalink to this headline">¶</a></h5>
+<p>Insere os dados no banco, se os campos estiverem validos:</p>
+<div class="highlight-python"><pre>@pyqtSignature("")
+on_btInserirBaixa_clicked(self)</pre>
+</div>
+</div>
+<div class="section" id="on-btatualizarbaixa-clicked">
+<h5>on_btAtualizarBaixa_clicked<a class="headerlink" href="#on-btatualizarbaixa-clicked" title="Permalink to this headline">¶</a></h5>
+<p>Atualiza os dados no banco, se os campos estiverem validos:</p>
+<div class="highlight-python"><pre>@pyqtSignature("")
+on_btAtualizarBaixa_clicked(self)</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -682,6 +993,57 @@ on_PesquisaMarca_textChanged(self, text)</pre>
 <li><a class="reference external" href="#id27">on_btCancelar_clicked</a></li>
 <li><a class="reference external" href="#on-pesquisanome-textchanged">on_PesquisaNome_textChanged</a></li>
 <li><a class="reference external" href="#on-pesquisamarca-textchanged">on_PesquisaMarca_textChanged</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="#pedidodecompra">PedidoDeCompra</a><ul>
+<li><a class="reference external" href="#id28">Metodos</a><ul>
+<li><a class="reference external" href="#id29">__init__</a></li>
+<li><a class="reference external" href="#id30">addUsuarioLogado</a></li>
+<li><a class="reference external" href="#id31">abrirComboResponsavel</a></li>
+<li><a class="reference external" href="#id32">capturaResponsavel</a></li>
+<li><a class="reference external" href="#validapedido">validaPedido</a></li>
+<li><a class="reference external" href="#id33">validaEquipamento</a></li>
+<li><a class="reference external" href="#abrirtabelapedidocompra">abrirTabelaPedidoCompra</a></li>
+<li><a class="reference external" href="#abrirtabelaequipamentopedido">abrirTabelaEquipamentoPedido</a></li>
+<li><a class="reference external" href="#montartabelapedidocompra">montarTabelaPedidoCompra</a></li>
+<li><a class="reference external" href="#montartabelaequipamentopedido">montarTabelaEquipamentoPedido</a></li>
+<li><a class="reference external" href="#inserirpedido">inserirPedido</a></li>
+<li><a class="reference external" href="#inserirequipamentopedido">inserirEquipamentoPedido</a></li>
+<li><a class="reference external" href="#atualizarpedido">atualizarPedido</a></li>
+<li><a class="reference external" href="#atualizarequipamentopedido">atualizarEquipamentoPedido</a></li>
+<li><a class="reference external" href="#busca-responsavel">Busca_Responsavel</a></li>
+<li><a class="reference external" href="#montar-tabela-de-busca-pedido">montar_tabela_de_busca_pedido</a></li>
+<li><a class="reference external" href="#on-btinserirpedido-clicked">on_btInserirPedido_clicked</a></li>
+<li><a class="reference external" href="#on-btinserirequipamento-clicked">on_btInserirEquipamento_clicked</a></li>
+<li><a class="reference external" href="#on-btatualizarpedido-clicked">on_btAtualizarPedido_clicked</a></li>
+<li><a class="reference external" href="#on-btatualizarequipamento-clicked">on_btAtualizarEquipamento_clicked</a></li>
+<li><a class="reference external" href="#on-buscanome-textchanged">on_BuscaNome_textChanged</a></li>
+<li><a class="reference external" href="#on-buscacodigo-textchanged">on_BuscaCodigo_textChanged</a></li>
+<li><a class="reference external" href="#on-buscastatus-activated">on_BuscaStatus_activated</a></li>
+<li><a class="reference external" href="#on-buscaresponsavel-activated">on_BuscaResponsavel_activated</a></li>
+<li><a class="reference external" href="#on-btmostrarequip-clicked">on_btMostrarEquip_clicked</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="#baixamaterial">BaixaMaterial</a><ul>
+<li><a class="reference external" href="#id34">Metodos</a><ul>
+<li><a class="reference external" href="#id35">__init__</a></li>
+<li><a class="reference external" href="#id36">addUsuarioLogado</a></li>
+<li><a class="reference external" href="#abrircombotecnico">abrirComboTecnico</a></li>
+<li><a class="reference external" href="#id37">abrirComboDepto</a></li>
+<li><a class="reference external" href="#montartabelas">montarTabelas</a></li>
+<li><a class="reference external" href="#id38">buscaIncremental</a></li>
+<li><a class="reference external" href="#capturatecnico">capturaTecnico</a></li>
+<li><a class="reference external" href="#capturadepto">capturaDepto</a></li>
+<li><a class="reference external" href="#validabaixa">validaBaixa</a></li>
+<li><a class="reference external" href="#id39">insere</a></li>
+<li><a class="reference external" href="#id40">atualiza</a></li>
+<li><a class="reference external" href="#deleta">deleta</a></li>
+<li><a class="reference external" href="#on-btinserirbaixa-clicked">on_btInserirBaixa_clicked</a></li>
+<li><a class="reference external" href="#on-btatualizarbaixa-clicked">on_btAtualizarBaixa_clicked</a></li>
 </ul>
 </li>
 </ul>

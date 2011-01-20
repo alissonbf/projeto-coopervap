@@ -2,22 +2,22 @@
 # -*- coding: utf-8 -*-             
 
 ## [Ficha]##################################################
-#	                                                       #					           
-#  Nome: Modulo Model				                       #
+#	                                                   #					           
+#  Nome: Modulo Model				           #
 #  Escrito por: Alisson Barbosa Ferreira                   #
 #               Alisson Oliveira Ferreira                  #
 #               Victor Hugo Neiva                          #
 #               Wesley Junior                              #
 #                                                          #
-#  Criado em: 30/08/2010			                       #
-#						                                   #
-#  Ultima atualizacao: 22/12/2010		                   #
-#						                                   #
+#  Criado em: 30/08/2010			           #
+#						           #
+#  Ultima atualizacao: 31/12/2010		           #
+#						           #
 #  [Descricao]##############################################
-#					                                       #
+#					                   #
 #  Este modulo contem as classes dos objetos que são       #
 #  usados pelo programa.                                   #
-#					                                       #
+#					                   #
 ############################################################
 
 
@@ -56,5 +56,36 @@ class tecnico():
         self.status=status
         self.usuario=usuario
         self.id=id
+
+class pedidocompra():
+    def __init__(self,data,status,id_usu,id_resp,id=None):
+        self.data=data
+        self.status=status
+        self.id_usu=id_usu
+        self.id_resp=id_resp
+        self.id=id
+
+
+class equipamentopedido():
+    def __init__(self,nome,descricao,unidade,entrega,id_pedido,id=None):
+        self.nome=nome
+        self.descricao=descricao
+        self.unidade=unidade
+        self.entrega=entrega
+        self.id_pedido=id_pedido
+        self.id=id
+
+class baixaMaterial():
+    def __init__(self, equipamento, qtd,id_depto,data,id_tec,motivo,id_usu,id=None):
+        self.equipamento = equipamento
+        self.qtd = qtd
+        self.id_depto = id_depto
+        self.data = data
+        self.id_tec = id_tec
+        self.motivo = motivo
+        self.id_usu = id_usu
+        self.id = id
+        
+    
        
         
