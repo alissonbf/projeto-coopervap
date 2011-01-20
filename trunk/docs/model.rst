@@ -131,15 +131,85 @@ Metodo que é executado quando o classe equipamento é instanciada, ele é o con
 :ref:`id_equip`: Parâmetro que recebe o id do equipamento, se o id não for passado ele recebe None
 
 
+-------------------
+Classe PedidoCompra
+-------------------
+
+Metodos
+=======
+
+__init__
+--------
+
+Metodo que é executado quando o classe pedidocompra é instanciada, ele é o construtor da classe::
+
+  __init__(self,data,status,id_usu,id_resp,id=None)
+
+:ref:`data`: Parâmetro que recebe a data do pedido de compra
+
+:ref:`status`: Parâmetro que recebe o status do pedido de compra
+
+:ref:`id_usu`: Parâmetro que recebe o id do usuario que fez o pedido de compra
+
+:ref:`id_resp`: Parâmetro que recebe o id do responsavel pelo pedido de compra
+
+:ref:`id`: Parâmetro que recebe o id do pedido de compra, se o parametro não for passado a variavel recebe None
 
 
+------------------------
+Classe EquipamentoPedido
+------------------------
+
+Metodos
+=======
+
+__init__
+--------
+
+Metodo que é executado quando o classe equipamentopedido é instanciada, ele é o construtor da classe::
+
+  __init__(self,nome,descricao,unidade,entrega,id_pedido,id=None)
 
 
+:ref:`nome`: Parâmetro que recebe o nome do equipamento
+
+:ref:`descricao`: Parâmetro que recebe a descrição do equipamento
+
+:ref:`unidade`: Parâmetro que recebe a unidade do equipamento
+
+:ref:`entrega`: Parâmetro que recebe a entrega do equipamento
+
+:ref:`id_pedido`: Parâmetro que recebe o id do pedido
+
+:ref:`id`: Parâmetro que recebe o id do equipamento do pedido, se o parametro não for passado a variavel recebe None
 
 
+--------------------
+Classe BaixaMaterial
+--------------------
 
+Metodos
+=======
 
+__init__
+--------
 
+Metodo que é executado quando o classe baixaMaterial é instanciada, ele é o construtor da classe::
 
+  __init__(self, equipamento, qtd,id_depto,data,id_tec,motivo,id_usu,id=None)
 
+:ref:`equipamento`: Parâmetro que recebe o nome do equipamento
 
+:ref:`qtd`: Parâmetro que recebe a quantidade de equipamentos
+
+:ref:`id_depto`: Parâmetro que recebe o id do departamento
+
+:ref:`data`: Parâmetro que recebe a data da baixa
+
+:ref:`id_tec`: Parâmetro que recebe o id do tecnico
+
+:ref:`motivo`: Parâmetro que recebe o motivo da baixa
+
+:ref:`id_usu`: Parâmetro que recebe o id do usuario que fez a baixa 
+
+:ref:`id`: Parâmetro que recebe o id da baixa do material, se o parametro não for passado a variavel recebe None

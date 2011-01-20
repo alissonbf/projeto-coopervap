@@ -55,23 +55,20 @@
            <item>
             <widget class="QFrame" name="frame_4">
              <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+              <enum>QFrame::Box</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
+              <enum>QFrame::Sunken</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_4">
               <item>
-               <widget class="QPushButton" name="btSalvarPedido">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
+               <widget class="QPushButton" name="btInserirPedido">
                 <property name="text">
-                 <string>Salvar</string>
+                 <string>Inserir</string>
                 </property>
                 <property name="icon">
                  <iconset resource="img.qrc">
-                  <normaloff>:/newPrefix/images/button_ok.png</normaloff>:/newPrefix/images/button_ok.png</iconset>
+                  <normaloff>:/newPrefix/images/add.png</normaloff>:/newPrefix/images/add.png</iconset>
                 </property>
                 <property name="flat">
                  <bool>true</bool>
@@ -79,16 +76,16 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btCancelarPedido">
+               <widget class="QPushButton" name="btAtualizarPedido">
                 <property name="enabled">
                  <bool>true</bool>
                 </property>
                 <property name="text">
-                 <string>Cancelar</string>
+                 <string>Atualizar</string>
                 </property>
                 <property name="icon">
                  <iconset resource="img.qrc">
-                  <normaloff>:/newPrefix/images/button_cancel.png</normaloff>:/newPrefix/images/button_cancel.png</iconset>
+                  <normaloff>:/newPrefix/images/button_ok.png</normaloff>:/newPrefix/images/button_ok.png</iconset>
                 </property>
                 <property name="flat">
                  <bool>true</bool>
@@ -101,10 +98,10 @@
            <item>
             <widget class="QFrame" name="frame">
              <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+              <enum>QFrame::Box</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
+              <enum>QFrame::Sunken</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
@@ -120,7 +117,14 @@
                  </widget>
                 </item>
                 <item row="0" column="1">
-                 <widget class="QLineEdit" name="EditPedido"/>
+                 <widget class="QLineEdit" name="EditPedido">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="mouseTracking">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
                 </item>
                 <item row="1" column="0">
                  <widget class="QLabel" name="label_2">
@@ -130,7 +134,14 @@
                  </widget>
                 </item>
                 <item row="1" column="1">
-                 <widget class="QLineEdit" name="EditData"/>
+                 <widget class="QLineEdit" name="EditData">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="inputMask">
+                   <string>##/##/####; </string>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>
@@ -157,12 +168,12 @@
                  <widget class="QComboBox" name="comboStatus">
                   <item>
                    <property name="text">
-                    <string>Em andamento</string>
+                    <string>Aberto</string>
                    </property>
                   </item>
                   <item>
                    <property name="text">
-                    <string>Finalizado</string>
+                    <string>Fechado</string>
                    </property>
                   </item>
                  </widget>
@@ -175,10 +186,10 @@
            <item>
             <widget class="QFrame" name="frame_6">
              <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+              <enum>QFrame::Box</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
+              <enum>QFrame::Sunken</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_6">
               <item>
@@ -194,10 +205,10 @@
            <item>
             <widget class="QFrame" name="frame_3">
              <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+              <enum>QFrame::Box</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
+              <enum>QFrame::Sunken</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
@@ -217,6 +228,9 @@
                 <property name="selectionBehavior">
                  <enum>QAbstractItemView::SelectRows</enum>
                 </property>
+                <property name="showGrid">
+                 <bool>true</bool>
+                </property>
                 <property name="sortingEnabled">
                  <bool>true</bool>
                 </property>
@@ -234,6 +248,14 @@
           </layout>
          </widget>
          <widget class="QWidget" name="page_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>716</width>
+            <height>442</height>
+           </rect>
+          </property>
           <attribute name="label">
            <string>Equipamentos do pedido</string>
           </attribute>
@@ -241,19 +263,33 @@
            <item>
             <widget class="QFrame" name="frame_5">
              <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+              <enum>QFrame::Box</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
+              <enum>QFrame::Sunken</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_5">
               <item>
-               <widget class="QPushButton" name="btSalvarEquipamento">
+               <widget class="QPushButton" name="btInserirEquipamento">
+                <property name="text">
+                 <string>Inserir</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="img.qrc">
+                  <normaloff>:/newPrefix/images/add.png</normaloff>:/newPrefix/images/add.png</iconset>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btAtualizarEquipamento">
                 <property name="enabled">
                  <bool>true</bool>
                 </property>
                 <property name="text">
-                 <string>Salvar</string>
+                 <string>Atualizar</string>
                 </property>
                 <property name="icon">
                  <iconset resource="img.qrc">
@@ -265,16 +301,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btCancelarEquipamento">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
+               <widget class="QPushButton" name="btMostrarEquip">
                 <property name="text">
-                 <string>Cancelar</string>
+                 <string>Mostar Equip</string>
                 </property>
                 <property name="icon">
                  <iconset resource="img.qrc">
-                  <normaloff>:/newPrefix/images/button_cancel.png</normaloff>:/newPrefix/images/button_cancel.png</iconset>
+                  <normaloff>:/newPrefix/images/configure.png</normaloff>:/newPrefix/images/configure.png</iconset>
                 </property>
                 <property name="flat">
                  <bool>true</bool>
@@ -287,35 +320,46 @@
            <item>
             <widget class="QFrame" name="frame_2">
              <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+              <enum>QFrame::Box</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
+              <enum>QFrame::Sunken</enum>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout">
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_2">
                 <item>
                  <layout class="QFormLayout" name="formLayout_3">
-                  <item row="0" column="0">
+                  <item row="1" column="0">
                    <widget class="QLabel" name="label_5">
                     <property name="text">
                      <string>Pedido</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="0" column="1">
-                   <widget class="QComboBox" name="comboPedido"/>
-                  </item>
-                  <item row="1" column="0">
+                  <item row="2" column="0">
                    <widget class="QLabel" name="label_6">
                     <property name="text">
                      <string>Nome do equipamento</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="1" column="1">
+                  <item row="2" column="1">
                    <widget class="QLineEdit" name="EditNome"/>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLineEdit" name="EditID">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="EditPedidoEq">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -348,7 +392,7 @@
               <item>
                <widget class="QLabel" name="label_7">
                 <property name="text">
-                 <string>Descrição</string>
+                 <string>Descrição - maximo de 400 caracteres</string>
                 </property>
                </widget>
               </item>
@@ -365,10 +409,10 @@
            <item>
             <widget class="QFrame" name="frame_8">
              <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+              <enum>QFrame::Box</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
+              <enum>QFrame::Sunken</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_8">
               <item>
@@ -384,10 +428,10 @@
            <item>
             <widget class="QFrame" name="frame_7">
              <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+              <enum>QFrame::Box</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
+              <enum>QFrame::Sunken</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_7">
               <item>
@@ -435,10 +479,10 @@
        <item>
         <widget class="QFrame" name="frame_11">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::Box</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
+          <enum>QFrame::Sunken</enum>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_11">
           <item>
@@ -459,12 +503,12 @@
             <item row="1" column="0">
              <widget class="QLabel" name="label_12">
               <property name="text">
-               <string>Data</string>
+               <string>Codigo do pedido</string>
               </property>
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="BuscaData"/>
+             <widget class="QLineEdit" name="BuscaCodigo"/>
             </item>
            </layout>
           </item>
@@ -491,12 +535,12 @@
              <widget class="QComboBox" name="BuscaStatus">
               <item>
                <property name="text">
-                <string>Em andamento</string>
+                <string>Aberto</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Finalizado</string>
+                <string>Fechado</string>
                </property>
               </item>
              </widget>
@@ -509,10 +553,10 @@
        <item>
         <widget class="QFrame" name="frame_10">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::Box</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
+          <enum>QFrame::Sunken</enum>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_10">
           <item>
@@ -528,10 +572,10 @@
        <item>
         <widget class="QFrame" name="frame_9">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::Box</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
+          <enum>QFrame::Sunken</enum>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>

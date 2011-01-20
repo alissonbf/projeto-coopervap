@@ -141,6 +141,64 @@
 </div>
 </div>
 </div>
+<div class="section" id="classe-pedidocompra">
+<h2>Classe PedidoCompra<a class="headerlink" href="#classe-pedidocompra" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>Metodos<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h4>__init__<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>Metodo que é executado quando o classe pedidocompra é instanciada, ele é o construtor da classe:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">status</span><span class="p">,</span><span class="n">id_usu</span><span class="p">,</span><span class="n">id_resp</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">data</em>: Parâmetro que recebe a data do pedido de compra</p>
+<p><em class="xref">status</em>: Parâmetro que recebe o status do pedido de compra</p>
+<p><em class="xref">id_usu</em>: Parâmetro que recebe o id do usuario que fez o pedido de compra</p>
+<p><em class="xref">id_resp</em>: Parâmetro que recebe o id do responsavel pelo pedido de compra</p>
+<p><em class="xref">id</em>: Parâmetro que recebe o id do pedido de compra, se o parametro não for passado a variavel recebe None</p>
+</div>
+</div>
+</div>
+<div class="section" id="classe-equipamentopedido">
+<h2>Classe EquipamentoPedido<a class="headerlink" href="#classe-equipamentopedido" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>Metodos<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h4>__init__<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>Metodo que é executado quando o classe equipamentopedido é instanciada, ele é o construtor da classe:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nome</span><span class="p">,</span><span class="n">descricao</span><span class="p">,</span><span class="n">unidade</span><span class="p">,</span><span class="n">entrega</span><span class="p">,</span><span class="n">id_pedido</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">nome</em>: Parâmetro que recebe o nome do equipamento</p>
+<p><em class="xref">descricao</em>: Parâmetro que recebe a descrição do equipamento</p>
+<p><em class="xref">unidade</em>: Parâmetro que recebe a unidade do equipamento</p>
+<p><em class="xref">entrega</em>: Parâmetro que recebe a entrega do equipamento</p>
+<p><em class="xref">id_pedido</em>: Parâmetro que recebe o id do pedido</p>
+<p><em class="xref">id</em>: Parâmetro que recebe o id do equipamento do pedido, se o parametro não for passado a variavel recebe None</p>
+</div>
+</div>
+</div>
+<div class="section" id="classe-baixamaterial">
+<h2>Classe BaixaMaterial<a class="headerlink" href="#classe-baixamaterial" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h3>Metodos<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h4>__init__<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<p>Metodo que é executado quando o classe baixaMaterial é instanciada, ele é o construtor da classe:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">equipamento</span><span class="p">,</span> <span class="n">qtd</span><span class="p">,</span><span class="n">id_depto</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">id_tec</span><span class="p">,</span><span class="n">motivo</span><span class="p">,</span><span class="n">id_usu</span><span class="p">,</span><span class="nb">id</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em class="xref">equipamento</em>: Parâmetro que recebe o nome do equipamento</p>
+<p><em class="xref">qtd</em>: Parâmetro que recebe a quantidade de equipamentos</p>
+<p><em class="xref">id_depto</em>: Parâmetro que recebe o id do departamento</p>
+<p><em class="xref">data</em>: Parâmetro que recebe a data da baixa</p>
+<p><em class="xref">id_tec</em>: Parâmetro que recebe o id do tecnico</p>
+<p><em class="xref">motivo</em>: Parâmetro que recebe o motivo da baixa</p>
+<p><em class="xref">id_usu</em>: Parâmetro que recebe o id do usuario que fez a baixa</p>
+<p><em class="xref">id</em>: Parâmetro que recebe o id da baixa do material, se o parametro não for passado a variavel recebe None</p>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -176,6 +234,27 @@
 <li><a class="reference external" href="#classe-equipamento">Classe Equipamento</a><ul>
 <li><a class="reference external" href="#id5">Metodos</a><ul>
 <li><a class="reference external" href="#id6">__init__</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="#classe-pedidocompra">Classe PedidoCompra</a><ul>
+<li><a class="reference external" href="#id7">Metodos</a><ul>
+<li><a class="reference external" href="#id8">__init__</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="#classe-equipamentopedido">Classe EquipamentoPedido</a><ul>
+<li><a class="reference external" href="#id9">Metodos</a><ul>
+<li><a class="reference external" href="#id10">__init__</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="#classe-baixamaterial">Classe BaixaMaterial</a><ul>
+<li><a class="reference external" href="#id11">Metodos</a><ul>
+<li><a class="reference external" href="#id12">__init__</a></li>
 </ul>
 </li>
 </ul>

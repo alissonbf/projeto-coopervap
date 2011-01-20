@@ -660,3 +660,393 @@ Capitura o que o usuario digitou e monta um comando sql, para busca pela marca d
     on_PesquisaMarca_textChanged(self, text)
 
 :ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+
+PedidoDeCompra
+--------------
+
+-------
+Metodos
+-------
+
+__init__
+********
+
+Metodo que é executado quando o classe é instanciada, ele é o construtor da classe::
+
+  __init__(self, parent=None)
+
+
+addUsuarioLogado
+****************
+
+Captura do arquivo de login o usuario logado::
+
+    addUsuarioLogado(self)
+
+:ref:`return id_usu`: Retorna o id do usuario logado
+
+
+abrirComboResponsavel
+*********************
+
+Preenche o Combo de Responsaveis::
+
+    abrirComboResponsavel(self)
+
+
+capturaResponsavel
+******************
+
+Captura o ID do responsavel::
+
+    capturaResponsavel(self)
+
+:ref:`return id_resp[0]`: Retorna o id do responsavel
+
+
+validaPedido
+************
+
+Valida os dados da primeira etapa do pedido de compra::
+
+    validaPedido(self)
+
+
+validaEquipamento
+*****************
+
+Valida os dados da primeira etapa do pedido de compra::
+
+    validaEquipamento(self)
+
+
+abrirTabelaPedidoCompra
+***********************
+
+Mostra o pedido que acabou de ser inserido::
+
+    abrirTabelaPedidoCompra(self,obj)
+
+:ref:`obj`: Objeto da classe pedidocompra
+
+
+abrirTabelaEquipamentoPedido
+****************************
+
+Mostra o equipamento que acabou de ser inserido no pedido::
+
+    abrirTabelaEquipamentoPedido(self,obj)
+
+:ref:`obj`: Objeto da classe equipamentopedido
+
+
+montarTabelaPedidoCompra
+************************
+
+Monta as colunas da tabela da primeira fase do pedido de compra::
+
+    montarTabelaPedidoCompra(self)
+
+
+montarTabelaEquipamentoPedido
+*****************************
+
+Monta as colunas da tabela da primeira fase do pedido de compra::
+
+    montarTabelaEquipamentoPedido(self)
+
+
+inserirPedido
+*************
+
+Insere a primeira fase do pedido no banco de dados::
+
+    inserirPedido(self,obj)
+
+:ref:`obj`: Objeto da classe pedidocompra
+
+
+inserirEquipamentoPedido
+************************
+
+Insere um pedido no banco de dados::
+
+    inserirEquipamentoPedido(self,obj)
+
+:ref:`obj`: Objeto da classe equipamentopedido
+
+
+atualizarPedido
+***************
+
+Atualiza os dados da primeira fase do realizar pedido de compra::
+
+    atualizarPedido(self,obj)
+
+:ref:`obj`: Objeto da classe pedidocompra
+
+
+atualizarEquipamentoPedido
+**************************
+
+Atualiza os dados da segunda fase do realizar pedido de compra::
+
+    atualizarEquipamentoPedido(self,obj)
+
+:ref:`obj`: Objeto da classe equipamentopedido
+
+
+Busca_Responsavel
+*****************
+
+captura o que o usuario escolheu no combobox e retorna a ID do responsavel para a ser utilizado na busca::
+
+    Busca_Responsavel(self)
+
+:ref:`return id_resp[0]`: Retorna o id do responsavel
+
+
+montar_tabela_de_busca_pedido
+*****************************
+
+monta as colunas da tabela que será visualizada na tela::
+
+    montar_tabela_de_busca_pedido(self, sql)
+
+:ref:`sql`: Instrução sql que define que tipo de busca o metodo vai executar.
+
+
+on_btInserirPedido_clicked
+**************************
+
+Insere  os dados da primeira fase do pedido no banco de dados::
+
+    @pyqtSignature("")
+    on_btInserirPedido_clicked(self)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>.
+
+
+on_btInserirEquipamento_clicked
+*******************************
+
+Insere  os dados da segunda fase do pedido no banco de dados::
+
+    @pyqtSignature("")
+    on_btInserirEquipamento_clicked(self)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>
+
+
+on_btAtualizarPedido_clicked
+****************************
+
+Atualiza os dados da primeira fase do pedido::
+
+    @pyqtSignature("")
+    on_btAtualizarPedido_clicked(self)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>
+
+
+on_btAtualizarEquipamento_clicked
+*********************************
+
+Altualiza os dados da segunda fase do pedido::
+
+    @pyqtSignature("")
+    on_btAtualizarEquipamento_clicked(self)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>
+
+
+on_BuscaNome_textChanged
+************************
+
+Captura o nome do equipamento que o usuario digitou e monta um comando sql, para busca pela marca do equipamento::
+
+    @pyqtSignature("QString")
+    on_BuscaNome_textChanged(self, text)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>
+
+
+
+on_BuscaCodigo_textChanged
+**************************
+
+Captura o codigo do pedido que o usuario digitou e monta um comando sql, para busca pela marca do equipamento::
+
+    @pyqtSignature("QString")
+    on_BuscaCodigo_textChanged(self, text)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>
+
+
+on_BuscaStatus_activated
+************************
+
+Captura o status do pedido que o usuario digitou e monta um comando sql, para busca pela marca do equipamento::
+
+    @pyqtSignature("QString")
+    on_BuscaStatus_activated(self, text)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>
+
+on_BuscaResponsavel_activated
+*****************************
+
+captura o responsavel que o usuario escolhei e monta um select para buscar o pedido realizado::
+
+    @pyqtSignature("QString")
+    on_BuscaResponsavel_activated(self, text)
+
+:ref:`@pyqtSignature("")`: Assinatura padão do python, que faz com que este metodo seja conectado ao widget "Novo" automaticamente. Todo metodo que irá conectar automaticamente ao widget, além de ter a assinatura padrão do python, deverá seguir o seguinte padrão em seu nome, on_<nome do widget>_<sinal que o widget enviará>
+
+
+on_btMostrarEquip_clicked
+*************************
+
+Pega o numero do Pedido de compra e mostra os equipamentos do pedido::
+
+    @pyqtSignature("")
+    on_btMostrarEquip_clicked(self)
+
+
+BaixaMaterial
+-------------
+
+-------
+Metodos
+-------
+
+__init__
+********
+
+Metodo que é executado quando o classe é instanciada, ele é o construtor da classe::
+
+  __init__(self, parent=None)
+
+
+addUsuarioLogado
+****************
+
+Captura do arquivo de login o usuario logado::
+
+    addUsuarioLogado(self)
+
+:ref:`return id_usu`: Retorna o id do usuario logado
+
+
+abrirComboTecnico
+*****************
+
+Preenche o Combo de Tecnicos::
+
+    abrirComboTecnico(self)
+
+
+abrirComboDepto
+***************
+
+Preenche o Combo de Departamentos::
+
+    abrirComboDepto(self)
+
+
+montarTabelas
+*************
+
+Monta as colunas das tabelas das abas de busca de equipamento e baixa::
+
+    montarTabelas(self)
+
+
+buscaIncremental
+****************
+
+Faz uma busca no banco de dados, o tipo de busca varia de acordo com o parametro sql::
+
+    buscaIncremental(self, sql)
+
+:ref:`sql`: Instrução sql que define que tipo de busca o metodo vai executar.
+
+
+capturaTecnico
+**************
+
+Captura o ID do responsavel::
+
+    capturaTecnico(self,tec)
+
+:ref:`tec`: Nome do tecnico, que terá seu id identificado
+
+:ref:`return id_tec[0]`: Retorna o id do tecnico
+
+
+capturaDepto
+************
+
+Captura o ID do departamento::
+
+    capturaDepto(self)
+
+:ref:`return id_depto[0]`: Retorna o id do departamento
+
+
+validaBaixa
+***********
+
+Valida os dados da tela de baixa no estoque::
+
+    validaBaixa(self)
+
+
+insere
+******
+
+Insere os dados no banco::
+
+    insere(self,obj)
+
+:ref:`obj`: Objeto da classe baixamaterial
+
+
+atualiza
+********
+
+Atualiza os dados no banco de dados::
+
+    atualiza(self,obj)
+
+:ref:`obj`: Objeto da classe baixamaterial
+
+
+deleta
+******
+
+Deleta os dados no banco de dados::
+
+    deleta(self,obj)
+
+:ref:`obj`: Objeto da classe baixamaterial
+
+
+on_btInserirBaixa_clicked
+*************************
+
+Insere os dados no banco, se os campos estiverem validos::
+
+    @pyqtSignature("")
+    on_btInserirBaixa_clicked(self)
+
+
+on_btAtualizarBaixa_clicked
+***************************
+
+Atualiza os dados no banco, se os campos estiverem validos::
+
+    @pyqtSignature("")
+    on_btAtualizarBaixa_clicked(self)
+

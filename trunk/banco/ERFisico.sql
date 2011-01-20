@@ -1,3 +1,4 @@
+CREATE SEQUENCE usuario_id_usuario_seq;
 
 CREATE TABLE usuario (
                 ID_usuario INTEGER NOT NULL DEFAULT nextval('usuario_id_usuario_seq'),
@@ -30,7 +31,7 @@ CREATE SEQUENCE tecnico_id_tecnico_seq;
 
 CREATE TABLE tecnico (
                 ID_tecnico INTEGER NOT NULL DEFAULT nextval('tecnico_id_tecnico_seq'),
-                nome unique VARCHAR(100) NOT NULL,
+                nome  VARCHAR(100) unique NOT NULL,
                 funcao VARCHAR(100) NOT NULL,
                 status VARCHAR(10) NOT NULL,
                 ID_usuario INTEGER NOT NULL,
@@ -51,7 +52,6 @@ CREATE TABLE equipamento (
                 unidade VARCHAR(70),
                 quantidade_inicial INTEGER NOT NULL,
                 estoque_min INTEGER NOT NULL,
-                patrimonio VARCHAR(10),
                 ID_usuario INTEGER NOT NULL,
                 ID_tecnico INTEGER NOT NULL,
                 CONSTRAINT equipamento_pk PRIMARY KEY (ID_equipamento)
