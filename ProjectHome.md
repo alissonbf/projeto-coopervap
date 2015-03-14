@@ -1,0 +1,1 @@
+Controle de peças de informática, feita em pyqt4.
